@@ -4,8 +4,8 @@ import mars.model.Coordinate;
 
 import static java.lang.Integer.valueOf;
 
-public class CoordinateParser {
-	public Coordinate parse(String input) {
+class CoordinateParser {
+	Coordinate parse(String input) {
 		return new Coordinate(valueOf(input));
 	}
 }

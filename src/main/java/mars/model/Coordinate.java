@@ -6,6 +6,9 @@ public class Coordinate {
 	private final int value;
 
 	public Coordinate(int value) {
+		if (value < 0) {
+			throw new IllegalArgumentException();
+		}
 		this.value = value;
 	}
 
