@@ -31,4 +31,8 @@ public class Coordinate {
 		}
 		return new Coordinate(0);
 	}
+
+	Coordinate decrement() {
+		return new Coordinate(value - 1);
+	}
 }

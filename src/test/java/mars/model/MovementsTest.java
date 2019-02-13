@@ -26,4 +26,14 @@ class MovementsTest {
 
 		assertEquals(expected, actual);
 	}
+
+	@Test
+	void shouldReturnExpectedWhenCoordinateCanNotDecrease() {
+		final var expected = new Coordinate(0);
+
+		final var actual = new Coordinate(1).decrement();
+
+		assertEquals(expected, actual);
+	}
+
 }
