@@ -32,7 +32,10 @@ public class Coordinate {
 		return new Coordinate(0);
 	}
 
-	Coordinate decrement() {
-		return new Coordinate(value - 1);
+	Coordinate decrement(Coordinate limit) {
+		if (value > 0) {
+			return new Coordinate(value - 1);
+		}
+		return limit;
 	}
 }

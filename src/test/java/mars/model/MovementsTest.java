@@ -28,10 +28,23 @@ class MovementsTest {
 	}
 
 	@Test
-	void shouldReturnExpectedWhenCoordinateCanNotDecrease() {
+	void shouldReturnExpectedWhenCoordinateCanDecrease() {
+		final var limit = new Coordinate(3);
+
 		final var expected = new Coordinate(0);
 
-		final var actual = new Coordinate(1).decrement();
+		final var actual = new Coordinate(1).decrement(limit);
+
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void shouldReturnExpectedWhenCoordinateCanNotDecrease() {
+		final var limit = new Coordinate(3);
+
+		final var expected = new Coordinate(3);
+
+		final var actual = new Coordinate(0).decrement(limit);
 
 		assertEquals(expected, actual);
 	}
