@@ -24,4 +24,8 @@ public class Coordinate {
 	public int hashCode() {
 		return Objects.hash(value);
 	}
+
+	public Coordinate increment() {
+		return new Coordinate(value + 1);
+	}
 }
