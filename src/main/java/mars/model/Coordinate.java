@@ -25,7 +25,10 @@ public class Coordinate {
 		return Objects.hash(value);
 	}
 
-	public Coordinate increment() {
-		return new Coordinate(value + 1);
+	Coordinate increment(Coordinate limit) {
+		if (value < limit.value) {
+			return new Coordinate(value + 1);
+		}
+		return new Coordinate(0);
 	}
 }
