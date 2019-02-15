@@ -9,33 +9,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-class MapParserTest {
+class DimensionParserTest {
 
 	private final CoordinateParser coordinateParser = Mockito.mock(CoordinateParser.class);
-	private final MapParser mapParser = new MapParser(coordinateParser);
+	private final DimensionParser dimensionParser = new DimensionParser(coordinateParser);
 
 	@Test
 	void shouldFailWhenInputIsNull() {
 		final String input = null;
-		assertThrows(IllegalArgumentException.class, () -> mapParser.parse(input));
+		assertThrows(IllegalArgumentException.class, () -> dimensionParser.parse(input));
 	}
 
 	@Test
 	void shouldFailWhenInputIsEmpty() {
 		final var input = "";
-		assertThrows(IllegalArgumentException.class, () -> mapParser.parse(input));
+		assertThrows(IllegalArgumentException.class, () -> dimensionParser.parse(input));
 	}
 
 	@Test
 	void shouldFailWhenInputHasOneNumber() {
 		final var input = "5";
-		assertThrows(IllegalArgumentException.class, () -> mapParser.parse(input));
+		assertThrows(IllegalArgumentException.class, () -> dimensionParser.parse(input));
 	}
 
 	@Test
 	void shouldFailWhenInputHasThreeNumbers() {
 		final var input = "5 5 5";
-		assertThrows(IllegalArgumentException.class, () -> mapParser.parse(input));
+		assertThrows(IllegalArgumentException.class, () -> dimensionParser.parse(input));
 	}
 
 	@Test
@@ -45,7 +45,7 @@ class MapParserTest {
 		final var y = whenCoordinateThenReturn(input.split(" ")[1]);
 
 		final var expected = new Dimension(x, y);
-		final var actual = mapParser.parse(input);
+		final var actual = dimensionParser.parse(input);
 
 		assertEquals(expected, actual);
 	}

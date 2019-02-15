@@ -5,12 +5,12 @@ import mars.model.Dimension;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 
-public class MapParser {
+public class DimensionParser {
 	private static final String SPACE = " ";
 
 	private final CoordinateParser coordinateParser;
 
-	public MapParser(CoordinateParser coordinateParser) {
+	public DimensionParser(CoordinateParser coordinateParser) {
 		this.coordinateParser = coordinateParser;
 	}
 
