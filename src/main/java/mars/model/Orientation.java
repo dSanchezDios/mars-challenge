@@ -1,6 +1,6 @@
 package mars.model;
 
-enum Orientation {
+public enum Orientation {
 	E, N, S, W;
 
 	private Orientation right;
