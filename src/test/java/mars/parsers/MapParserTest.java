@@ -21,15 +21,15 @@ class MapParserTest {
 
 	@Test
 	void shouldReturnExpected() {
-		final var obstaclesInput = "5 1\n" +
+		final var obstaclesInput = "1 1\n" +
 				"3 4";
-		whenDimensionThenReturn("5 1");
+		whenDimensionThenReturn("1 1");
 		whenDimensionThenReturn("3 4");
-		final HashSet<Dimension> dimensionSet = new HashSet<>();
-		dimensionSet.add(dimensionParser.parse("5 1"));
-		dimensionSet.add(dimensionParser.parse("3 4"));
+		final HashSet<Dimension> obstaclesSet = new HashSet<>();
+		obstaclesSet.add(dimensionParser.parse("1 1"));
+		obstaclesSet.add(dimensionParser.parse("3 4"));
 
-		final var obstacles = new Obstacles(dimensionSet);
+		final var obstacles = new Obstacles(obstaclesSet);
 		when(obstaclesParser.parse(obstaclesInput)).thenReturn(obstacles);
 
 		final var limitsInput = "3 5";
