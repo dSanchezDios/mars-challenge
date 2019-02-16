@@ -15,17 +15,16 @@ public class InstructionListOptimizer {
 		final var optimized = new ArrayList<Instruction>();
 		final var listForOptimize = new ArrayList<Instruction>();
 
-		input
-				.forEach(
-						instruction -> {
-							if (instruction == Instruction.f || instruction == Instruction.b) {
-								optimized.addAll(optimizeTurns(listForOptimize));
-								listForOptimize.clear();
-								optimized.add(instruction);
-							} else {
-								listForOptimize.add(instruction);
-							}
-						});
+		input.forEach(
+				instruction -> {
+					if (instruction == Instruction.f || instruction == Instruction.b) {
+						optimized.addAll(optimizeTurns(listForOptimize));
+						listForOptimize.clear();
+						optimized.add(instruction);
+					} else {
+						listForOptimize.add(instruction);
+					}
+				});
 
 		optimized.addAll(optimizeTurns(listForOptimize));
 
