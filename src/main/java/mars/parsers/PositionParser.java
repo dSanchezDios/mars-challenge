@@ -8,11 +8,11 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-class PositionParser {
+public class PositionParser {
 	private static final String SPACE = " ";
 	private final CoordinateParser coordinateParser;
 
-	PositionParser(CoordinateParser coordinateParser) {
+	public PositionParser(CoordinateParser coordinateParser) {
 		this.coordinateParser = coordinateParser;
 	}
 

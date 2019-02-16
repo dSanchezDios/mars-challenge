@@ -8,12 +8,12 @@ import java.util.List;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 
-class DimensionParser {
+public class DimensionParser {
 	private static final String SPACE = " ";
 
 	private final CoordinateParser coordinateParser;
 
-	DimensionParser(CoordinateParser coordinateParser) {
+	public DimensionParser(CoordinateParser coordinateParser) {
 		this.coordinateParser = coordinateParser;
 	}
 

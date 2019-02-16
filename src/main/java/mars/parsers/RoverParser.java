@@ -7,19 +7,19 @@ import mars.model.Rover;
 
 import java.util.HashSet;
 
-class RoverParser {
+public class RoverParser {
 
 	private final MapParser mapParser;
 	private final InstructionsParser instructionsParser;
 	private final PositionParser positionParser;
 
-	RoverParser(MapParser mapParser, InstructionsParser instructionsParser, PositionParser positionParser) {
+	public RoverParser(MapParser mapParser, InstructionsParser instructionsParser, PositionParser positionParser) {
 		this.mapParser = mapParser;
 		this.instructionsParser = instructionsParser;
 		this.positionParser = positionParser;
 	}
 
-	Rover parse(String mapSize, String obstacles, String instructions, String positionInput) {
+	public Rover parse(String mapSize, String obstacles, String instructions, String positionInput) {
 		final var map = mapParser.parse(mapSize, obstacles);
 		final var position = positionParser.parse(positionInput);
 

@@ -5,11 +5,11 @@ import mars.model.Map;
 
 import java.util.HashSet;
 
-class MapParser {
+public class MapParser {
 	private final ObstaclesParser obstaclesParser;
 	private final DimensionParser dimensionParser;
 
-	MapParser(ObstaclesParser obstaclesParser, DimensionParser dimensionParser) {
+	public MapParser(ObstaclesParser obstaclesParser, DimensionParser dimensionParser) {
 		this.dimensionParser = dimensionParser;
 		this.obstaclesParser = obstaclesParser;
 	}

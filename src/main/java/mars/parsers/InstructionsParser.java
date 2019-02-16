@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import static mars.model.utils.InstructionListOptimizer.optimize;
 
-class InstructionsParser {
+public class InstructionsParser {
 	List<Instruction> parse(String input) {
 		return optimize(
 				input

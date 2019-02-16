@@ -18,7 +18,7 @@ public final class Rover {
 		return position;
 	}
 
-	Position executeInstructions() {
+	public Position executeInstructions() {
 		instructions.forEach(this::executeInstruction);
 		return position;
 	}

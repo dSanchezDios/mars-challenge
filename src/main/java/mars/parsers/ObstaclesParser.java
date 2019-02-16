@@ -8,7 +8,7 @@ public class ObstaclesParser {
 	private static final String LINE_BREAK = "\n";
 	private final DimensionParser dimensionParser;
 
-	ObstaclesParser(DimensionParser dimensionParser) {
+	public ObstaclesParser(DimensionParser dimensionParser) {
 		this.dimensionParser = dimensionParser;
 	}
 
