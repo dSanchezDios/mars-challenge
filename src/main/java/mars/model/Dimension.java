@@ -34,4 +34,8 @@ public class Dimension {
 		result = 31 * result + y.hashCode();
 		return result;
 	}
+
+	public boolean isOutOf(Dimension obstacle) {
+		return x.isBigger(obstacle.getX()) || y.isBigger(obstacle.getY());
+	}
 }
