@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RoverMoveForwardTest {
 
 	@Test
-	void shouldReturnExpectedPositionWhenMoveToNorth() {
+	void shouldReturnExpectedPositionWhenMoveToNorthNoObstacles() {
 		final var instructionList = singletonList(f);
 		final var map = new Map(new Dimension(new Coordinate(5), new Coordinate(6)), new HashSet<>());
 		final var position = new Position(new Dimension(new Coordinate(0), new Coordinate(0)), N);
@@ -25,7 +25,7 @@ class RoverMoveForwardTest {
 	}
 
 	@Test
-	void shouldReturnExpectedPositionWhenMoveToSouth() {
+	void shouldReturnExpectedPositionWhenMoveToSouthNoObstacles() {
 		final var instructionList = singletonList(f);
 		final var map = new Map(new Dimension(new Coordinate(5), new Coordinate(6)), new HashSet<>());
 		final var position = new Position(new Dimension(new Coordinate(0), new Coordinate(1)), S);
@@ -38,7 +38,7 @@ class RoverMoveForwardTest {
 	}
 
 	@Test
-	void shouldReturnExpectedPositionWhenMoveToEast() {
+	void shouldReturnExpectedPositionWhenMoveToEastNoObstacles() {
 		final var instructionList = singletonList(f);
 		final var map = new Map(new Dimension(new Coordinate(5), new Coordinate(6)), new HashSet<>());
 		final var position = new Position(new Dimension(new Coordinate(0), new Coordinate(0)), E);
@@ -51,7 +51,7 @@ class RoverMoveForwardTest {
 	}
 
 	@Test
-	void shouldReturnExpectedPositionWhenMoveToWest() {
+	void shouldReturnExpectedPositionWhenMoveToWestNoObstacles() {
 		final var instructionList = singletonList(f);
 		final var map = new Map(new Dimension(new Coordinate(5), new Coordinate(6)), new HashSet<>());
 		final var position = new Position(new Dimension(new Coordinate(0), new Coordinate(1)), W);
