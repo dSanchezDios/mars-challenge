@@ -1,6 +1,6 @@
 package mars.model;
 
-public class Dimension {
+public final class Dimension {
 	private final Coordinate x;
 	private final Coordinate y;
 

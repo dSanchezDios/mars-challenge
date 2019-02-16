@@ -2,7 +2,7 @@ package mars.model;
 
 import java.util.Objects;
 
-public class Coordinate {
+public final class Coordinate {
 	private final int value;
 
 	public Coordinate(int value) {

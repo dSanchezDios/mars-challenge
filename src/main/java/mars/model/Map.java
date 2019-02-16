@@ -3,7 +3,7 @@ package mars.model;
 import java.util.HashSet;
 import java.util.Objects;
 
-public class Map {
+public final class Map {
 	private final Dimension limits;
 	private final HashSet<Dimension> obstacles;
 

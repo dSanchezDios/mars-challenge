@@ -1,6 +1,6 @@
 package mars.model;
 
-public class Position {
+public final class Position {
 	private final Dimension coordinates;
 	private final Orientation orientation;
 

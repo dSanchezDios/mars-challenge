@@ -3,7 +3,7 @@ package mars.model;
 import java.util.List;
 import java.util.Objects;
 
-public class Rover {
+public final class Rover {
 	private final Map map;
 	private final List<Instruction> instructions;
 	private Position position;
