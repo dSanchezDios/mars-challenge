@@ -17,8 +17,12 @@ class CoordinateParserTest {
 
 	@Test
 	void shouldFailEmpty() {
-		final var input = "a";
 		assertThrows(IllegalArgumentException.class, () -> coordinateParser.parse(""));
+	}
+
+	@Test
+	void shouldFailEmptyTrim() {
+		assertThrows(IllegalArgumentException.class, () -> coordinateParser.parse("  "));
 	}
 
 	@Test
