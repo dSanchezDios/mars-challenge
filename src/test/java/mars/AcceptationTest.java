@@ -59,4 +59,29 @@ class AcceptationTest {
 		assertEquals(expected, actual);
 	}
 
+	@Test
+	void shouldReturnExpectedWhenInputHasNoInstructions() {
+		final var coordinateParser = new CoordinateParser();
+
+		final DimensionParser dimensionParser = new DimensionParser(
+				coordinateParser
+		);
+
+		final RoverParser roverParser = new RoverParser(
+				new MapParser(new ObstaclesParser(dimensionParser), dimensionParser),
+				new InstructionsParser(),
+				new PositionParser(coordinateParser));
+		final var launcher = new RoverLauncher(
+				roverParser
+		);
+
+		final var mapSize = "5 5";
+		final var position = "3 3 E";
+
+		final var expected = "3 3 E";
+		final var actual = launcher.launch(mapSize, null, null, position);
+
+		assertEquals(expected, actual);
+	}
+
 }

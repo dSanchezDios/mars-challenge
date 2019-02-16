@@ -11,6 +11,17 @@ class CoordinateParserTest {
 	private CoordinateParser coordinateParser = new CoordinateParser();
 
 	@Test
+	void shouldFailWithNull() {
+		assertThrows(IllegalArgumentException.class, () -> coordinateParser.parse(null));
+	}
+
+	@Test
+	void shouldFailEmpty() {
+		final var input = "a";
+		assertThrows(IllegalArgumentException.class, () -> coordinateParser.parse(""));
+	}
+
+	@Test
 	void shouldFailWithNoNumberInput() {
 		final var input = "a";
 		assertThrows(IllegalArgumentException.class, () -> coordinateParser.parse(input));
