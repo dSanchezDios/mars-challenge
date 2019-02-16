@@ -35,11 +35,19 @@ public class Rover {
 
 	Position executeInstructions() {
 		for (Instruction instruction : instructions) {
-			if (instruction == Instruction.f) {
-				position = moveForward();
-			}
-			if (instruction == Instruction.b) {
-				position = moveBackward();
+			switch (instruction) {
+				case f:
+					position = moveForward();
+					break;
+				case b:
+					position = moveBackward();
+					break;
+				case r:
+					position = new Position(position.getCoordinates(), position.getOrientation().getRight());
+					break;
+				case l:
+					position = new Position(position.getCoordinates(), position.getOrientation().getLeft());
+					break;
 			}
 		}
 		return position;
