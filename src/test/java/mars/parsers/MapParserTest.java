@@ -13,7 +13,7 @@ import static java.lang.Integer.valueOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-public class MapParserTest {
+class MapParserTest {
 
 	private final DimensionParser dimensionParser = Mockito.mock(DimensionParser.class);
 	private final ObstaclesParser obstaclesParser = Mockito.mock(ObstaclesParser.class);
@@ -32,7 +32,7 @@ public class MapParserTest {
 		final var obstacles = new Obstacles(dimensionSet);
 		when(obstaclesParser.parse(obstaclesInput)).thenReturn(obstacles);
 
-		final String limitsInput = "3 5";
+		final var limitsInput = "3 5";
 		whenDimensionThenReturn(limitsInput);
 		final var limits = dimensionParser.parse(limitsInput);
 
