@@ -38,4 +38,8 @@ public class Coordinate {
 		}
 		return limit;
 	}
+
+	boolean isBigger(Coordinate input) {
+		return value > input.value;
+	}
 }
