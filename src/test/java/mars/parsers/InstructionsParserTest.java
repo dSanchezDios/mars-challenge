@@ -20,9 +20,9 @@ class InstructionsParserTest {
 	
 	@Test
 	void shouldReturnExpectedInstructions() {
-		final var input = "lrfblrfb";
+		final var input = "frflb";
 
-		final var expected = asList(l,r,f,b,l,r,f,b);
+		final var expected = asList(f,r,f,l,b);
 
 		final var actual = instructionsParser.parse(input);
 
