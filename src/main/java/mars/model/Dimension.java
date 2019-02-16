@@ -9,12 +9,28 @@ public class Dimension {
 		this.y = y;
 	}
 
-	public Coordinate getX() {
+	Coordinate getX() {
 		return x;
 	}
 
-	public Coordinate getY() {
+	Coordinate getY() {
 		return y;
+	}
+
+	Dimension incrementX(Dimension limits) {
+		return new Dimension(x.increment(limits.x), y);
+	}
+
+	Dimension incrementY(Dimension limits) {
+		return new Dimension(x, y.increment(limits.y));
+	}
+
+	Dimension decrementX(Dimension limits) {
+		return new Dimension(x.decrement(limits.x), y);
+	}
+
+	Dimension decrementY(Dimension limits) {
+		return new Dimension(x, y.decrement(limits.y));
 	}
 
 	@Override
@@ -37,21 +53,5 @@ public class Dimension {
 
 	public boolean isOutOf(Dimension obstacle) {
 		return x.isBigger(obstacle.x) || y.isBigger(obstacle.y);
-	}
-
-	Dimension incrementX(Dimension limits) {
-		return new Dimension(x.increment(limits.x), y);
-	}
-
-	Dimension incrementY(Dimension limits) {
-		return new Dimension(x, y.increment(limits.y));
-	}
-
-	Dimension decrementX(Dimension limits) {
-		return new Dimension(x.decrement(limits.x), y);
-	}
-
-	Dimension decrementY(Dimension limits) {
-		return new Dimension(x, y.decrement(limits.y));
 	}
 }

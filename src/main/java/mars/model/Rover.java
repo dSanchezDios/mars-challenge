@@ -18,21 +18,6 @@ public class Rover {
 		return position;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Rover rover = (Rover) o;
-		return map.equals(rover.map) &&
-				instructions.equals(rover.instructions) &&
-				position.equals(rover.position);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(map, instructions, position);
-	}
-
 	Position executeInstructions() {
 		for (Instruction instruction : instructions) {
 			switch (instruction) {
@@ -88,4 +73,18 @@ public class Rover {
 		return position;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Rover rover = (Rover) o;
+		return map.equals(rover.map) &&
+				instructions.equals(rover.instructions) &&
+				position.equals(rover.position);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(map, instructions, position);
+	}
 }
