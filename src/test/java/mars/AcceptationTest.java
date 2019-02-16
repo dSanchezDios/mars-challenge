@@ -49,7 +49,7 @@ class AcceptationTest {
 				roverParser
 		);
 
-		final var mapSize = "5 5";
+		final var mapSize = "5 10";
 		final var instructions = "bbrbbrrrrrbrrbllll";
 		final var position = "3 3 E";
 
