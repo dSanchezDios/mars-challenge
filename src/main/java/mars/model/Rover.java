@@ -38,10 +38,9 @@ public class Rover {
 			if (instruction == Instruction.f) {
 				position = moveForward();
 			}
-			if (instruction == Instruction.f) {
+			if (instruction == Instruction.b) {
 				position = moveBackward();
 			}
-
 		}
 		return position;
 	}

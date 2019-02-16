@@ -25,6 +25,11 @@ public class Coordinate {
 		return Objects.hash(value);
 	}
 
+	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
+
 	Coordinate increment(Coordinate limit) {
 		if (value < limit.value) {
 			return new Coordinate(value + 1);

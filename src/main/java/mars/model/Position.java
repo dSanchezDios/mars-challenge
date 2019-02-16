@@ -37,6 +37,6 @@ public class Position {
 
 	@Override
 	public String toString() {
-		return coordinates + " " + orientation;
+		return coordinates.getX()+ " " + coordinates.getY() + " " + orientation;
 	}
 }
