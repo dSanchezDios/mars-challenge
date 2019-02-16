@@ -11,6 +11,7 @@ import java.util.HashSet;
 
 import static java.lang.Integer.valueOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 class MapParserTest {
@@ -18,6 +19,26 @@ class MapParserTest {
 	private final DimensionParser dimensionParser = Mockito.mock(DimensionParser.class);
 	private final ObstaclesParser obstaclesParser = Mockito.mock(ObstaclesParser.class);
 	private final MapParser mapParser = new MapParser(obstaclesParser, dimensionParser);
+
+	@Test
+	void shouldFailWhenObstaclesAreOutOfMap() {
+		final var obstaclesInput = "1 1\n" +
+				"3 4";
+		whenDimensionThenReturn("1 1");
+		whenDimensionThenReturn("3 4");
+		final HashSet<Dimension> obstaclesSet = new HashSet<>();
+		obstaclesSet.add(dimensionParser.parse("1 1"));
+		obstaclesSet.add(dimensionParser.parse("3 4"));
+
+		final var obstacles = new Obstacles(obstaclesSet);
+		when(obstaclesParser.parse(obstaclesInput)).thenReturn(obstacles);
+
+		final var limitsInput = "1 2";
+		whenDimensionThenReturn(limitsInput);
+
+		assertThrows(IllegalArgumentException.class, () -> mapParser.parse(limitsInput, obstaclesInput));
+
+	}
 
 	@Test
 	void shouldReturnExpected() {
