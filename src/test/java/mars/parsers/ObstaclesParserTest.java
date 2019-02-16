@@ -2,7 +2,6 @@ package mars.parsers;
 
 import mars.model.Coordinate;
 import mars.model.Dimension;
-import mars.model.Obstacles;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -19,14 +18,14 @@ class ObstaclesParserTest {
 
 	@Test
 	void shouldReturnWhenInputIsNull() {
-		final var expected = new Obstacles(new HashSet<>());
+		final var expected = new HashSet<>();
 		final var actual = obstaclesParser.parse(null);
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	void shouldFailWhenInputIsEmpty() {
-		final var expected = new Obstacles(new HashSet<>());
+		final var expected = new HashSet<>();
 		final var actual = obstaclesParser.parse("");
 		assertEquals(expected, actual);
 	}
@@ -39,11 +38,10 @@ class ObstaclesParserTest {
 		whenDimensionThenReturn("5 1");
 		whenDimensionThenReturn("3 4");
 
-		final HashSet<Dimension> dimensionSet = new HashSet<>();
-		dimensionSet.add(dimensionParser.parse("5 1"));
-		dimensionSet.add(dimensionParser.parse("3 4"));
+		final HashSet<Dimension> expected = new HashSet<>();
+		expected.add(dimensionParser.parse("5 1"));
+		expected.add(dimensionParser.parse("3 4"));
 
-		final var expected = new Obstacles(dimensionSet);
 		final var actual = obstaclesParser.parse(input);
 
 		assertEquals(expected, actual);

@@ -1,12 +1,13 @@
 package mars.model;
 
+import java.util.HashSet;
 import java.util.Objects;
 
 public class Map {
 	private final Dimension limits;
-	private final Obstacles obstacles;
+	private final HashSet<Dimension> obstacles;
 
-	public Map(Dimension limits, Obstacles obstacles) {
+	public Map(Dimension limits, HashSet<Dimension> obstacles) {
 		this.limits = limits;
 		this.obstacles = obstacles;
 	}
@@ -15,7 +16,7 @@ public class Map {
 		return limits;
 	}
 
-	public Obstacles getObstacles() {
+	public HashSet<Dimension> getObstacles() {
 		return obstacles;
 	}
 

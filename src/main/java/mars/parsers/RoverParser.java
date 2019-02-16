@@ -1,7 +1,5 @@
 package mars.parsers;
 
-import mars.model.Map;
-import mars.model.Position;
 import mars.model.Rover;
 
 class RoverParser {
@@ -24,7 +22,7 @@ class RoverParser {
 			throw new IllegalArgumentException();
 		}
 
-		final var obstaclesList = map.getObstacles().getObstaclesList();
+		final var obstaclesList = map.getObstacles();
 
 		if (obstaclesList.contains(position.getCoordinates())) {
 			throw new IllegalArgumentException();

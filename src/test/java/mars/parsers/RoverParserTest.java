@@ -27,7 +27,7 @@ class RoverParserTest {
 
 		final var map = new Map(
 				new Dimension(new Coordinate(5), new Coordinate(6)),
-				new Obstacles(obstacles)
+				obstacles
 		);
 
 		final var instructionList = asList(l, r, f, b, l, r, f, b);
@@ -67,7 +67,7 @@ class RoverParserTest {
 
 		final var map = new Map(
 				new Dimension(new Coordinate(5), new Coordinate(6)),
-				new Obstacles(obstacles)
+				obstacles
 		);
 
 		final var instructionList = asList(l, r, f, b, l, r, f, b);
@@ -99,7 +99,7 @@ class RoverParserTest {
 
 		final var map = new Map(
 				new Dimension(new Coordinate(5), new Coordinate(6)),
-				new Obstacles(obstacles)
+				obstacles
 		);
 
 		final var instructionList = asList(l, r, f, b, l, r, f, b);

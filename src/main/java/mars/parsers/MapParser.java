@@ -1,8 +1,6 @@
 package mars.parsers;
 
-import mars.model.Dimension;
 import mars.model.Map;
-import mars.model.Obstacles;
 
 class MapParser {
 	private final ObstaclesParser obstaclesParser;
@@ -14,10 +12,10 @@ class MapParser {
 	}
 
 	Map parse(String limitInput, String obstaclesInput) {
-		final Obstacles obstacles = obstaclesParser.parse(obstaclesInput);
-		final Dimension limit = dimensionParser.parse(limitInput);
+		final var obstacles = obstaclesParser.parse(obstaclesInput);
+		final var limit = dimensionParser.parse(limitInput);
 
-		obstacles.getObstaclesList()
+		obstacles
 				.stream()
 				.filter(obstacle -> obstacle.isOutOf(limit))
 				.findAny()

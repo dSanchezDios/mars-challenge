@@ -3,7 +3,6 @@ package mars.parsers;
 import mars.model.Coordinate;
 import mars.model.Dimension;
 import mars.model.Map;
-import mars.model.Obstacles;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -30,8 +29,7 @@ class MapParserTest {
 		obstaclesSet.add(dimensionParser.parse("1 1"));
 		obstaclesSet.add(dimensionParser.parse("3 4"));
 
-		final var obstacles = new Obstacles(obstaclesSet);
-		when(obstaclesParser.parse(obstaclesInput)).thenReturn(obstacles);
+		when(obstaclesParser.parse(obstaclesInput)).thenReturn(obstaclesSet);
 
 		final var limitsInput = "1 2";
 		whenDimensionThenReturn(limitsInput);
@@ -50,14 +48,13 @@ class MapParserTest {
 		obstaclesSet.add(dimensionParser.parse("1 1"));
 		obstaclesSet.add(dimensionParser.parse("3 4"));
 
-		final var obstacles = new Obstacles(obstaclesSet);
-		when(obstaclesParser.parse(obstaclesInput)).thenReturn(obstacles);
+		when(obstaclesParser.parse(obstaclesInput)).thenReturn(obstaclesSet);
 
 		final var limitsInput = "3 5";
 		whenDimensionThenReturn(limitsInput);
 		final var limits = dimensionParser.parse(limitsInput);
 
-		final var expected = new Map(limits, obstacles);
+		final var expected = new Map(limits, obstaclesSet);
 		final var actual = mapParser.parse(limitsInput, obstaclesInput);
 
 		assertEquals(expected, actual);
