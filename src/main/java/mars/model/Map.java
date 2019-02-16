@@ -11,6 +11,14 @@ public class Map {
 		this.obstacles = obstacles;
 	}
 
+	public Dimension getLimits() {
+		return limits;
+	}
+
+	public Obstacles getObstacles() {
+		return obstacles;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

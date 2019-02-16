@@ -1,24 +1,39 @@
 package mars.parsers;
 
+import mars.model.Map;
+import mars.model.Position;
 import mars.model.Rover;
 
-public class RoverParser {
+class RoverParser {
 
 	private final MapParser mapParser;
 	private final InstructionsParser instructionsParser;
 	private final PositionParser positionParser;
 
-	public RoverParser(MapParser mapParser, InstructionsParser instructionsParser, PositionParser positionParser) {
+	RoverParser(MapParser mapParser, InstructionsParser instructionsParser, PositionParser positionParser) {
 		this.mapParser = mapParser;
 		this.instructionsParser = instructionsParser;
 		this.positionParser = positionParser;
 	}
 
-	Rover parse(String mapSize, String obstacles, String instructions, String position) {
+	Rover parse(String mapSize, String obstacles, String instructions, String positionInput) {
+		final var map = mapParser.parse(mapSize, obstacles);
+		final var position = positionParser.parse(positionInput);
+
+		if (position.getCoordinates().isOutOf(map.getLimits())) {
+			throw new IllegalArgumentException();
+		}
+
+		final var obstaclesList = map.getObstacles().getObstaclesList();
+
+		if (obstaclesList.contains(position.getCoordinates())) {
+			throw new IllegalArgumentException();
+		}
+
 		return new Rover(
-				mapParser.parse(mapSize, obstacles),
+				map,
 				instructionsParser.parse(instructions),
-				positionParser.parse(position)
+				position
 		);
 	}
 }
