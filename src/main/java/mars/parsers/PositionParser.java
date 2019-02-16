@@ -31,7 +31,7 @@ public class PositionParser {
 	}
 
 	private void checkInputNull(String input) {
-		if (input == null) {
+		if (input == null || input.trim().isEmpty()) {
 			throw new IllegalArgumentException();
 		}
 	}

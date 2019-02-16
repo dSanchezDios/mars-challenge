@@ -15,7 +15,7 @@ public class ObstaclesParser {
 	public HashSet<Dimension> parse(String input) {
 		final HashSet<Dimension> obstaclesList = new HashSet<>();
 
-		if (input == null || input.isEmpty()) {
+		if (input == null || input.trim().isEmpty()) {
 			return obstaclesList;
 		}
 

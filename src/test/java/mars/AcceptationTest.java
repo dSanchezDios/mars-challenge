@@ -79,7 +79,7 @@ class AcceptationTest {
 		final var position = "3 3 E";
 
 		final var expected = "3 3 E";
-		final var actual = launcher.launch(mapSize, null, null, position);
+		final var actual = launcher.launch(mapSize, null, "", position);
 
 		assertEquals(expected, actual);
 	}

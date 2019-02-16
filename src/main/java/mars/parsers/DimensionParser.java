@@ -36,7 +36,7 @@ public class DimensionParser {
 	}
 
 	private void checkInputNull(String plateauLine) {
-		if (plateauLine == null || plateauLine.isEmpty()) {
+		if (plateauLine == null || plateauLine.trim().isEmpty()) {
 			throw new IllegalArgumentException();
 		}
 	}
