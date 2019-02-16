@@ -19,23 +19,30 @@ public class Rover {
 	}
 
 	Position executeInstructions() {
-		for (Instruction instruction : instructions) {
-			switch (instruction) {
-				case f:
-					position = moveForward();
-					break;
-				case b:
-					position = moveBackward();
-					break;
-				case r:
-					position = new Position(position.getCoordinates(), position.getOrientation().getRight());
-					break;
-				case l:
-					position = new Position(position.getCoordinates(), position.getOrientation().getLeft());
-					break;
-			}
-		}
+		instructions.forEach(this::executeInstruction);
 		return position;
+	}
+
+	Position executeInstructions(Instruction instruction) {
+		executeInstruction(instruction);
+		return position;
+	}
+
+	private void executeInstruction(Instruction instruction) {
+		switch (instruction) {
+			case f:
+				position = moveForward();
+				break;
+			case b:
+				position = moveBackward();
+				break;
+			case r:
+				position = new Position(position.getCoordinates(), position.getOrientation().getRight());
+				break;
+			case l:
+				position = new Position(position.getCoordinates(), position.getOrientation().getLeft());
+				break;
+		}
 	}
 
 	private Position moveForward() {
@@ -87,4 +94,5 @@ public class Rover {
 	public int hashCode() {
 		return Objects.hash(map, instructions, position);
 	}
+
 }
