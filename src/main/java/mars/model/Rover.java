@@ -6,12 +6,16 @@ import java.util.Objects;
 public class Rover {
 	private final Map map;
 	private final List<Instruction> instructions;
-	private final Position position;
+	private Position position;
 
 	public Rover(Map map, List<Instruction> instructions, Position position) {
 		this.map = map;
 		this.instructions = instructions;
 		this.position = position;
+	}
+
+	public Position getPosition() {
+		return position;
 	}
 
 	@Override
@@ -27,5 +31,31 @@ public class Rover {
 	@Override
 	public int hashCode() {
 		return Objects.hash(map, instructions, position);
+	}
+
+	Position executeInstructions() {
+		for (Instruction instruction : instructions) {
+			if (instruction == Instruction.f) {
+				position = moveForward();
+			}
+		}
+		return position;
+	}
+
+	private Position moveForward() {
+		var orientation = position.getOrientation();
+
+		switch (orientation) {
+			case N:
+				return new Position(position.getCoordinates().incrementY(map.getLimits()), orientation);
+			case S:
+				return new Position(position.getCoordinates().decrementY(map.getLimits()), orientation);
+			case E:
+				return new Position(position.getCoordinates().incrementX(map.getLimits()), orientation);
+			case W:
+				return new Position(position.getCoordinates().decrementX(map.getLimits()), orientation);
+		}
+		
+		return position;
 	}
 }

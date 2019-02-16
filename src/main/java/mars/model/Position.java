@@ -13,6 +13,10 @@ public class Position {
 		return coordinates;
 	}
 
+	Orientation getOrientation() {
+		return orientation;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
