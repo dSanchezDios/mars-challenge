@@ -38,6 +38,10 @@ public class Rover {
 			if (instruction == Instruction.f) {
 				position = moveForward();
 			}
+			if (instruction == Instruction.f) {
+				position = moveBackward();
+			}
+
 		}
 		return position;
 	}
@@ -55,7 +59,26 @@ public class Rover {
 			case W:
 				return new Position(position.getCoordinates().decrementX(map.getLimits()), orientation);
 		}
-		
+
 		return position;
 	}
+
+
+	private Position moveBackward() {
+		var orientation = position.getOrientation();
+
+		switch (orientation) {
+			case N:
+				return new Position(position.getCoordinates().decrementY(map.getLimits()), orientation);
+			case S:
+				return new Position(position.getCoordinates().incrementY(map.getLimits()), orientation);
+			case E:
+				return new Position(position.getCoordinates().decrementX(map.getLimits()), orientation);
+			case W:
+				return new Position(position.getCoordinates().incrementX(map.getLimits()), orientation);
+		}
+
+		return position;
+	}
+
 }

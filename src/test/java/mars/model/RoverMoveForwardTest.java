@@ -9,7 +9,7 @@ import static mars.model.Instruction.f;
 import static mars.model.Orientation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class RoverExecutorTest {
+class RoverMoveForwardTest {
 
 	@Test
 	void shouldReturnExpectedPositionWhenMoveToNorth() {
