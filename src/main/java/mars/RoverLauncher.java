@@ -1,16 +1,19 @@
 package mars;
 
-import mars.parsers.RoverParser;
+import mars.parsers.*;
 
-class RoverLauncher {
+public final class RoverLauncher {
 
-	private final RoverParser roverParser;
+	public static String launch(String mapSize, String obstacles, String instructions, String position) {
+		final var coordinateParser = new CoordinateParser();
+		final var dimensionParser = new DimensionParser(coordinateParser);
 
-	RoverLauncher(RoverParser roverParser) {
-		this.roverParser = roverParser;
-	}
+		final RoverParser roverParser = new RoverParser(
+				new MapParser(new ObstaclesParser(dimensionParser), dimensionParser),
+				new InstructionsParser(),
+				new PositionParser(coordinateParser)
+		);
 
-	String launch(String mapSize, String obstacles, String instructions, String position) {
 		var rover = roverParser.parse(mapSize, obstacles, instructions, position);
 
 		return rover.executeInstructions().toString();
