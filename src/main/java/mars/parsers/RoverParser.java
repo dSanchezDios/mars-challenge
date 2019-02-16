@@ -1,6 +1,11 @@
 package mars.parsers;
 
+import mars.model.Dimension;
+import mars.model.Map;
+import mars.model.Position;
 import mars.model.Rover;
+
+import java.util.HashSet;
 
 class RoverParser {
 
@@ -18,20 +23,28 @@ class RoverParser {
 		final var map = mapParser.parse(mapSize, obstacles);
 		final var position = positionParser.parse(positionInput);
 
-		if (position.getCoordinates().isOutOf(map.getLimits())) {
-			throw new IllegalArgumentException();
-		}
+		checkRoverOutOfRange(map, position);
 
 		final var obstaclesList = map.getObstacles();
 
-		if (obstaclesList.contains(position.getCoordinates())) {
-			throw new IllegalArgumentException();
-		}
+		checkRoverNotInObstacle(position, obstaclesList);
 
 		return new Rover(
 				map,
 				instructionsParser.parse(instructions),
 				position
 		);
+	}
+
+	private void checkRoverNotInObstacle(Position position, HashSet<Dimension> obstaclesList) {
+		if (obstaclesList.contains(position.getCoordinates())) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	private void checkRoverOutOfRange(Map map, Position position) {
+		if (position.getCoordinates().isOutOf(map.getLimits())) {
+			throw new IllegalArgumentException();
+		}
 	}
 }

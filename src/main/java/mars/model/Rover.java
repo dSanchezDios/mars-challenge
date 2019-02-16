@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Rover {
-	final Map map;
-	final List<Instruction> instructions;
-	final Position position;
+	private final Map map;
+	private final List<Instruction> instructions;
+	private final Position position;
 
 	public Rover(Map map, List<Instruction> instructions, Position position) {
 		this.map = map;

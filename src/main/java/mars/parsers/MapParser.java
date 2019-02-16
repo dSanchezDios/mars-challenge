@@ -1,6 +1,9 @@
 package mars.parsers;
 
+import mars.model.Dimension;
 import mars.model.Map;
+
+import java.util.HashSet;
 
 class MapParser {
 	private final ObstaclesParser obstaclesParser;
@@ -15,6 +18,15 @@ class MapParser {
 		final var obstacles = obstaclesParser.parse(obstaclesInput);
 		final var limit = dimensionParser.parse(limitInput);
 
+		checkObstaclesOutOfRange(obstacles, limit);
+
+		return new Map(
+				limit,
+				obstacles
+		);
+	}
+
+	private void checkObstaclesOutOfRange(HashSet<Dimension> obstacles, Dimension limit) {
 		obstacles
 				.stream()
 				.filter(obstacle -> obstacle.isOutOf(limit))
@@ -22,10 +34,5 @@ class MapParser {
 				.ifPresent(s -> {
 					throw new IllegalArgumentException();
 				});
-
-		return new Map(
-				limit,
-				obstacles
-		);
 	}
 }

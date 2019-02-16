@@ -5,6 +5,7 @@ import mars.model.Dimension;
 import java.util.HashSet;
 
 public class ObstaclesParser {
+	private static final String LINE_BREAK = "\n";
 	private final DimensionParser dimensionParser;
 
 	ObstaclesParser(DimensionParser dimensionParser) {
@@ -18,7 +19,7 @@ public class ObstaclesParser {
 			return obstaclesList;
 		}
 
-		final var list = input.split("\n");
+		final var list = input.split(LINE_BREAK);
 
 		if (list.length == 0) {
 			throw new IllegalArgumentException();
@@ -27,6 +28,7 @@ public class ObstaclesParser {
 		for (String i : list) {
 			obstaclesList.add(dimensionParser.parse(i));
 		}
+
 		return obstaclesList;
 	}
 }

@@ -9,10 +9,6 @@ public class Position {
 		this.orientation = orientation;
 	}
 
-	public Orientation getOrientation() {
-		return orientation;
-	}
-
 	public Dimension getCoordinates() {
 		return coordinates;
 	}
