@@ -6,10 +6,10 @@ public class MarsRover {
 
 	public static void main(String[] args) {
 
-		var map = getMap();
-		var rover = getRoverPosition();
-		var obstacles = getObstacles();
-		var instructions = getInstructions();
+		var map = getMapInput();
+		var rover = getRoverPositionInput();
+		var obstacles = getObstaclesInput();
+		var instructions = getInstructionsInput();
 
 		printInputs(map, rover, instructions);
 
@@ -17,22 +17,22 @@ public class MarsRover {
 		System.out.println(RoverUtils.launch(map, obstacles, instructions, rover));
 	}
 
-	private static String getRoverPosition() {
+	private static String getRoverPositionInput() {
 		System.out.println("Insert rover position ex \"0 0 N\"");
 		return new Scanner(System.in).nextLine();
 	}
 
-	private static String getMap() {
+	private static String getMapInput() {
 		System.out.println("Insert map size ex \"5 6\"");
 		return new Scanner(System.in).nextLine();
 	}
 
-	private static String getObstacles() {
+	private static String getObstaclesInput() {
 		System.out.println("Insert obstacles ex \"1 2-3 4\"");
 		return new Scanner(System.in).nextLine();
 	}
 
-	private static String getInstructions() {
+	private static String getInstructionsInput() {
 		System.out.println("Insert list of instructions ex: \"lbrf\"");
 		System.out.println("Actions permitted f = forward, b = backward, l = turn left, r = turn right)");
 		return new Scanner(System.in).nextLine();
