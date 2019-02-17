@@ -1,39 +1,21 @@
-I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that 
-I wrote before start to code:
+I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that I wrote
+before start to code:
 
-Instructions for compile, test and run:
-
-		1.- You need java 11 and maven installed.
-		
-        2.- You need to do an install and then you run the java class, just open the folder in terminal and:
-            
-            > mvn install
-            > cd target/classes/
-            > java MarsRover
-            
-		3.- To run all test, execute in a terminal:
-		
-			> mvn test
-			
-		4.- To run the example test, execute in a terminal:
-		
-			> mvn -Dtest=AcceptationTest#shouldReturnExpectedWhenEverythingIsOk test
-		
+############################################ ASSUMPTIONS ###############################################################
 
 I have assumed that:
 
-		1.- Rovers and obstacles can not exist out of the map, that means an input with a rover out of
-		    the range will throw an IllegalArgumentException with a description.
+1.- Rovers and obstacles can not exist out of the map, that means an input with a rover out of the range will throw
+    an IllegalArgumentException with a description.
 
-		2.- Lowerleft coordinates are (0, 0), so there is no negative coordinates, that
-		    means an input with negative coordinates will throw an IllegalArgumentException.
+2.- Bottom left coordinates are (0, 0), so there is no negative coordinates, that means an input with negative 
+    coordinates will throw an IllegalArgumentException.
 
-		3.- Rover has a position and a list of instructions, that means an input without position
-		    will throw an IllegalArgumentException.
+3.- Rover has a position and a list of instructions, that means an input without position will throw an 
+    IllegalArgumentException.
 
-		4.- With a plateau coordinates (X, Y), rover movements are not delimited,
-		    that means rover position (X+1, Y) will be (0,Y) and (X, Y+1) will be (X, 0) and same for (-1, Y)
-		    or (X, -1).
+4.- With a plateau coordinates (X, Y), rover movements are not delimited, that means rover position (X+1, Y) will be
+    (0,Y) and (X, Y+1) will be (X, 0) and same for (-1, Y) or (X, -1).
 		    
 			e.g.:
 				- Map range:          (2, 3)
@@ -42,9 +24,9 @@ I have assumed that:
 			    - Rover instruction:  (f, f)
 			    - Rover position after execute instructions: (1, 0, N)
 
-		5.- I do not want the rover to run out of battery 🤖, that means between f's or b's:
+5.- I do not want the rover to run out of battery 🤖, that means between f's or b's:
 		
-		    5.1.- Turns in the same direction are optimized in groups of four. 
+   5.1.- Turns in the same direction are optimized in groups of four. 
 
 			e.g.:
 			    - x8 r -> x0 r
@@ -52,16 +34,19 @@ I have assumed that:
 			    - x10 r -> x2 r
 			    - x11 r -> x3 r
 			
-		   5.2.- r and l are opposite.
+   5.2.- r and l are opposite.
 
 			e.g.:
 			    - rlrlr -> R
 			    - lllllllrr -> L
-
-Design:
-
-	With these assumptions I've written tests, main (AcceptationTest) who tests from beginning to end then
-	project, the rest of them are the ones that I, using TDD, have implemented the rest of classes.
+			    
+6.- When the next instruction move the rover to an obstacle it throw an IllegalArgumentException with the last
+    valid position.
+            
+############################################## DESIGN ##################################################################
+            
+With these assumptions I've written tests, main (AcceptationTest) who tests from beginning to end then project, 
+the rest of them are the ones that I, using TDD, have implemented the rest of classes.
 
 	    I started doing test for parse the input, they they were "telling" me the objects I needed.
 
@@ -92,25 +77,61 @@ Design:
 		     and move, or turn depending of the instruction, at the end it return the actual position.
 		     Rovers also can execute a single instruction as in the example.
 		     I decided just read instructions and put movements private I thought is easier for the user :-).
-
-		# utils: utils class for optimize the list of instructions
+		     
+		     # utils
+		     
+		     - InstructionListOptimizer: Optimize the instruction list provided.
 		
-		RoversUtils:
+ I decided implement this function because the intern legacy but I would prefer to have just an instructions executor
+ for instructions arrays as the readme.md description… But it didnt take me a big effort it was a release instead of
+ a implementation since it was done.
+ 		
+RoversUtils:
 
 		- launch: reads inputs and return the result of execute the rover as a String.
 		- create rover: reads inputs and return a rover.
 		
-		/* 
-		 * I decided implement this function because the intern legacy but I would prefer to have just an
-		 * instructions executor for instructions arrays as the readme.md description… But  It didnt take me a big
-		 * effor it was a realease instead of a implementation since it was done.
-		/*
-		
-		MarsRover:
+MarsRover:
 		
 		- This is the intern main but with a little refactor. It displays instructions and execute the inputs.
 		  Intern did a good job but I want to talk with him/her about OOP, abstraction, scanners, do whiles, SOLID,
-		  unit testing, TDD and rest of clean code practices. We can do a kata 🤓😬.
+		  unit testing, TDD and rest of clean code practices. We can/should do some katas 🤓😬.
+		  I split the solution in two modes:
+		  
+		    - Array mode: readme solution, you provide an instructions array input and then execute and print the 
+		                  input.
+		                  
+		    - Interactive mode: intern functionality, ask step by step for an instruction.
+
+  
+    
+############################################ TO BUILD & RUN ############################################################
+
+1.- You need java 11 and maven installed.
+
+2.- You need to do an install and then you run the java class, just open the folder in terminal and:
+
+> mvn install
+> cd target/classes/
+        
+2.1.- After you moved to the package you if you want to try with the array mode:
+
+> java MarsRover -a 
+        
+2.2.- Or you can try with interactive:
+
+> java MarsRover -i 
+
+3.- To run all test, execute in a terminal:
+
+> mvn test
+
+4.- To run the example test, execute in a terminal:
+
+> mvn -Dtest=AcceptationTest#shouldReturnExpectedWhenEverythingIsOk test
+
+
+This is all.
 
 Thanks,
-D.
+D
