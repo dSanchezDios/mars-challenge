@@ -32,8 +32,7 @@ class ObstaclesParserTest {
 
 	@Test
 	void shouldReturnPlateauObjectForValidInput() {
-		final var input = "5 1\n" +
-				"3 4";
+		final var input = "5 1-3 4";
 
 		whenDimensionThenReturn("5 1");
 		whenDimensionThenReturn("3 4");

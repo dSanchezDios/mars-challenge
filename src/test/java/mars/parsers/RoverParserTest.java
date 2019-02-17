@@ -42,7 +42,7 @@ class RoverParserTest {
 		);
 
 		final var sizeInput = "5 6";
-		final var obstaclesInput = "2 3\n";
+		final var obstaclesInput = "2 3";
 		final var instructionsInput = "lrfblrfb";
 		final var positionInput = "0 0 S";
 
@@ -76,7 +76,7 @@ class RoverParserTest {
 		);
 
 		final var sizeInput = "5 6";
-		final var obstaclesInput = "2 3\n";
+		final var obstaclesInput = "2 3";
 		final var instructionsInput = "lrfblrfb";
 		final var positionInput = "10 0 S";
 
@@ -108,7 +108,7 @@ class RoverParserTest {
 		);
 
 		final var sizeInput = "5 6";
-		final var obstaclesInput = "2 3\n";
+		final var obstaclesInput = "2 3";
 		final var instructionsInput = "lrfblrfb";
 		final var positionInput = "0 0 S";
 

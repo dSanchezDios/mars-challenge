@@ -21,8 +21,7 @@ class MapParserTest {
 
 	@Test
 	void shouldFailWhenObstaclesAreOutOfMap() {
-		final var obstaclesInput = "1 1\n" +
-				"3 4";
+		final var obstaclesInput = "1 1-3 4";
 		whenDimensionThenReturn("1 1");
 		whenDimensionThenReturn("3 4");
 		final HashSet<Dimension> obstaclesSet = new HashSet<>();
@@ -40,8 +39,7 @@ class MapParserTest {
 
 	@Test
 	void shouldReturnExpected() {
-		final var obstaclesInput = "1 1\n" +
-				"3 4";
+		final var obstaclesInput = "1 1-3 4";
 		whenDimensionThenReturn("1 1");
 		whenDimensionThenReturn("3 4");
 		final HashSet<Dimension> obstaclesSet = new HashSet<>();

@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public class ObstaclesParser {
 
-	private static final String LINE_BREAK = "\n";
+	private static final String LINE_BREAK = "-";
 	private static final IllegalArgumentException OBSTACLES_INPUT_HAS_NO_SEPARATOR =
 			new IllegalArgumentException("Obstacles input has no separator.");
 
