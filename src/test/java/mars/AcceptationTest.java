@@ -2,7 +2,7 @@ package mars;
 
 import org.junit.jupiter.api.Test;
 
-import static mars.RoverLauncher.launch;
+import static mars.RoverUtils.launch;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AcceptationTest {
