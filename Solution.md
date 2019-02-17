@@ -1,7 +1,7 @@
 > I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that I wrote
   before start to code:
 
-# ASSUMPTIONS ⚖️
+# ⚖️ ASSUMPTIONS
 
 ## I have assumed that:
 
@@ -43,7 +43,7 @@
 6. When the next instruction move the rover to an obstacle it throw an IllegalArgumentException with the last valid
    position.
             
-# DESIGN 🎨
+# 🎨 DESIGN
             
 > With these assumptions I've written tests, main (AcceptationTest) who tests from beginning to end then project, 
   the rest of them are the ones that I, using TDD, have implemented the rest of classes.I started doing test for parse 
@@ -118,7 +118,7 @@
     * Array mode: readme solution, you provide an instructions array input and then execute and print the input.             
     * Interactive mode: intern functionality, ask step by step for an instruction.
    
-# To build and run  ⛏🏃
+# ⛏🏃 To build and run
 
 1. You need java 11 and maven installed.
 
