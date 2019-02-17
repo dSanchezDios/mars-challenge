@@ -7,29 +7,30 @@ import static mars.RoverUtils.createRover;
 import static mars.RoverUtils.launch;
 
 public class MarsRover {
-
-	private static final IllegalArgumentException WRONG_MODE = new IllegalArgumentException("Execute in array mode with -a or interactive mode with -i.");
+	private static final String ARRAY_MODE = "-a";
+	private static final String INTERACTIVE_MODE = "-i";
+	private static final IllegalArgumentException WRONG_MODE =
+			new IllegalArgumentException("Execute in array mode with -a or interactive mode with -i.");
 
 	public static void main(String[] args) {
-
 		checkArguments(args);
-		final var mode = args[0];
 
+		final var mode = args[0];
 		final var mapInput = getMapInput();
 		final var positionInput = getRoverPositionInput();
 		final var obstaclesInput = getObstaclesInput();
 
-		if (mode.equals("-a")) {
+		if (mode.equals(ARRAY_MODE)) {
 			final var instructionsInput = getInstructionsInput();
-			instructionsMode(mapInput, obstaclesInput, instructionsInput, positionInput);
-		} else if (mode.equals("-i")) {
+			arrayMode(mapInput, obstaclesInput, instructionsInput, positionInput);
+		} else if (mode.equals(INTERACTIVE_MODE)) {
 			interactiveMode(mapInput, obstaclesInput, positionInput);
 		} else {
 			throw WRONG_MODE;
 		}
 	}
 
-	private static void instructionsMode(String map, String obstacles, String instructions, String rover) {
+	private static void arrayMode(String map, String obstacles, String instructions, String rover) {
 		printInputs(map, rover, instructions);
 		System.out.println("Rover output:");
 		System.out.println(launch(map, obstacles, instructions, rover));
@@ -50,7 +51,7 @@ public class MarsRover {
 	}
 
 	private static void checkArguments(String[] args) {
-		if (args == null || args.length != 1 || !(args[0].equals("-a") || args[0].equals("-i"))) {
+		if (args == null || args.length != 1 || !(args[0].equals(ARRAY_MODE) || args[0].equals(INTERACTIVE_MODE))) {
 			throw WRONG_MODE;
 		}
 	}
