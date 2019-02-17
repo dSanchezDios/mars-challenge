@@ -99,13 +99,18 @@ Design:
 
 		- launch: reads inputs and return the result of execute the rover as a String.
 		- create rover: reads inputs and return a rover.
-		// I dont really like it but I decided implement this function because the intern legacy
+		
+		/* 
+		 * I decided implement this function because the intern legacy but I would prefer to have just an
+		 * instructions executor for instructions arrays as the readme.md description… But  It didnt take me a big
+		 * effor it was a realease instead of a implementation since it was done.
+		/*
 		
 		MarsRover:
 		
 		- This is the intern main but with a little refactor. It displays instructions and execute the inputs.
-		  Intern did a good job but I want to talk with him/her about abstraction, Scanners, do whiles, SOLID,
-		  unit testing, TDD and rest of clean code practices 🤓😬.
+		  Intern did a good job but I want to talk with him/her about OOP, abstraction, scanners, do whiles, SOLID,
+		  unit testing, TDD and rest of clean code practices. We can do a kata 🤓😬.
 
 Thanks,
 D.
