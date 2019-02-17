@@ -25,8 +25,8 @@
 			    - Rover position after execute instructions: (1, 0, N)
 
 5. I do not want the rover to run out of battery 🤖, that means between f's or b's:
-		
-   Turns in the same direction are optimized in groups of four. 
+        
+        Turns in the same direction are optimized in groups of four. 
 
 			e.g.:
 			    - x8 r -> x0 r
@@ -34,7 +34,7 @@
 			    - x10 r -> x2 r
 			    - x11 r -> x3 r
 			
-   Turns r and l are opposite.
+        Turns r and l are opposite.
 
 			e.g.:
 			    - rlrlr -> R
