@@ -9,6 +9,9 @@ import java.util.HashSet;
 
 public class RoverParser {
 
+	private static final IllegalArgumentException OUT_OF_MAP = new IllegalArgumentException("Rover is out of map range.");
+	private static final IllegalArgumentException IN_A_OBSTACLE = new IllegalArgumentException("Rover is set in a obstacle.");
+
 	private final MapParser mapParser;
 	private final InstructionsParser instructionsParser;
 	private final PositionParser positionParser;
@@ -36,15 +39,16 @@ public class RoverParser {
 		);
 	}
 
-	private void checkRoverNotInObstacle(Position position, HashSet<Dimension> obstaclesList) {
-		if (obstaclesList.contains(position.getCoordinates())) {
-			throw new IllegalArgumentException();
+	private void checkRoverOutOfRange(Map map, Position position) {
+		if (position.getCoordinates().isOutOf(map.getLimits())) {
+			throw OUT_OF_MAP;
 		}
 	}
 
-	private void checkRoverOutOfRange(Map map, Position position) {
-		if (position.getCoordinates().isOutOf(map.getLimits())) {
-			throw new IllegalArgumentException();
+	private void checkRoverNotInObstacle(Position position, HashSet<Dimension> obstaclesList) {
+		if (obstaclesList.contains(position.getCoordinates())) {
+			throw IN_A_OBSTACLE;
 		}
 	}
+
 }

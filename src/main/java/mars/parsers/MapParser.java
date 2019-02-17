@@ -6,6 +6,10 @@ import mars.model.Map;
 import java.util.HashSet;
 
 public class MapParser {
+
+	private static final IllegalArgumentException OBSTACLE_OUT_OF_MAP =
+			new IllegalArgumentException("At least one of the obstacles is out of the map.");
+
 	private final ObstaclesParser obstaclesParser;
 	private final DimensionParser dimensionParser;
 
@@ -32,7 +36,7 @@ public class MapParser {
 				.filter(obstacle -> obstacle.isOutOf(limit))
 				.findAny()
 				.ifPresent(s -> {
-					throw new IllegalArgumentException();
+					throw OBSTACLE_OUT_OF_MAP;
 				});
 	}
 }

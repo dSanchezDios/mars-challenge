@@ -6,6 +6,9 @@ import static java.lang.Integer.parseInt;
 
 public class CoordinateParser {
 
+	private static final IllegalArgumentException NOT_A_NUMBER =
+			new IllegalArgumentException("Input is not a coordinate valid.");
+
 	Coordinate parse(String input) {
 		checkInput(input);
 
@@ -22,7 +25,7 @@ public class CoordinateParser {
 		try {
 			return parseInt(input);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException();
+			throw NOT_A_NUMBER;
 		}
 	}
 }

@@ -9,7 +9,12 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 
 public class DimensionParser {
+
 	private static final String SPACE = " ";
+	private static final IllegalArgumentException INPUT_EMPTY =
+			new IllegalArgumentException("Dimension input is null or empty.");
+	private static final IllegalArgumentException INPUT_NOT_TWO_DIMENSION =
+			new IllegalArgumentException("Dimension input needs two coordinates.");
 
 	private final CoordinateParser coordinateParser;
 
@@ -31,13 +36,13 @@ public class DimensionParser {
 
 	private void checkInputWellFormed(List<Coordinate> coordinates) {
 		if (coordinates.size() != 2) {
-			throw new IllegalArgumentException();
+			throw INPUT_NOT_TWO_DIMENSION;
 		}
 	}
 
 	private void checkInputNull(String plateauLine) {
 		if (plateauLine == null || plateauLine.trim().isEmpty()) {
-			throw new IllegalArgumentException();
+			throw INPUT_EMPTY;
 		}
 	}
 }

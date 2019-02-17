@@ -9,7 +9,13 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class PositionParser {
+
 	private static final String SPACE = " ";
+	private static final IllegalArgumentException INPUT_NULL =
+			new IllegalArgumentException("Position input is null or empty.");
+	private static final IllegalArgumentException NEED_THREE_ARGUMENTS =
+			new IllegalArgumentException("Position input has no three arguments.");
+
 	private final CoordinateParser coordinateParser;
 
 	public PositionParser(CoordinateParser coordinateParser) {
@@ -32,13 +38,13 @@ public class PositionParser {
 
 	private void checkInputNull(String input) {
 		if (input == null || input.trim().isEmpty()) {
-			throw new IllegalArgumentException();
+			throw INPUT_NULL;
 		}
 	}
 
 	private void checkInputWellFormed(List<String> parts) {
 		if (parts.size() != 3) {
-			throw new IllegalArgumentException();
+			throw NEED_THREE_ARGUMENTS;
 		}
 	}
 }

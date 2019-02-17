@@ -5,7 +5,11 @@ import mars.model.Dimension;
 import java.util.HashSet;
 
 public class ObstaclesParser {
+
 	private static final String LINE_BREAK = "\n";
+	private static final IllegalArgumentException OBSTACLES_INPUT_HAS_NO_SEPARATOR =
+			new IllegalArgumentException("Obstacles input has no separator.");
+
 	private final DimensionParser dimensionParser;
 
 	public ObstaclesParser(DimensionParser dimensionParser) {
@@ -22,7 +26,7 @@ public class ObstaclesParser {
 		final var list = input.split(LINE_BREAK);
 
 		if (list.length == 0) {
-			throw new IllegalArgumentException();
+			throw OBSTACLES_INPUT_HAS_NO_SEPARATOR;
 		}
 
 		for (String i : list) {
