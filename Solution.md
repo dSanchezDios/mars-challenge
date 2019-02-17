@@ -123,26 +123,27 @@
 2. You need to do an install and then you run the java class, just open the folder in terminal and:
 
     > mvn install
+    
+3. You need to move to package generated:
+
     > cd target/classes/
         
-3. After you moved to the package you if you want to try with the array mode:
+4. After you moved to the package you if you want to try with the array mode:
 
     > java MarsRover -a 
         
-4. Or you can try with interactive mode:
+5. Or you can try with interactive mode:
 
     > java MarsRover -i 
 
-5. To run all test, execute in a terminal:
+6. To run all test, execute in a terminal:
 
     > mvn test
 
-6. To run the example test, execute in a terminal:
+7. To run the example test, execute in a terminal:
 
     > mvn -Dtest=AcceptationTest#shouldReturnExpectedWhenEverythingIsOk test
 
 That's all.
-
-
 Thanks,
 D 
