@@ -53,7 +53,7 @@
 
 > They parse string input and return new objects or throw exceptions.
 
-## RoverParser: 
+## RoverParser
     It read the global input and calls the rest of parsers, if everything is OK it will return the Rover object that
     contains the list of instructions, position and map.
 
@@ -101,12 +101,12 @@
     to have just an instructions executor for arrays as the readme description… It didnt take me a big effort, it was a
     release instead of a implementation since it was done.
 
-# RoversUtils:
+# RoversUtils
 
     * launch: reads inputs and return the result of execute the rover as a String.
     * create rover: reads inputs and return a rover.
 		
-# MarsRover:
+# MarsRover
 		
     This is the intern main but with a little refactor. It displays instructions and execute the inputs. Intern did a
     good job but I want to talk with him/her about OOP, abstraction, scanners, do whiles, SOLID, unit testing, TDD and
