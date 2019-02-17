@@ -103,7 +103,7 @@ Design:
 		
 		MarsRover:
 		
-		- This is the intern main but with a little refactor. It display instructions and execute the inputs.
+		- This is the intern main but with a little refactor. It displays instructions and execute the inputs.
 		  Intern did a good job but I want to talk with him/her about abstraction, Scanners, do whiles, SOLID,
 		  unit testing, TDD and rest of clean code practices 🤓😬.
 
