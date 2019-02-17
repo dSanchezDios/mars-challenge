@@ -20,18 +20,18 @@ public class MarsRover {
 
 		printInputs(map, rover, instructions);
 
+		System.out.println("Rover log:");
 		System.out.println(RoverUtils.launch(map, null, instructions, rover));
 		reader.close();
 	}
 
 	private static void printInputs(String map, String rover, String instructionsNumber) {
+		System.out.println("####################################");
 		System.out.println("Inputs:");
-		System.out.println("Map: ");
-		System.out.print(map);
-		System.out.println("Rover: ");
-		System.out.print(rover);
-		System.out.println("Instructions: ");
-		System.out.print(instructionsNumber);
+		System.out.println("Map: " + map);
+		System.out.println("Rover: " + rover);
+		System.out.println("Instructions: " + instructionsNumber);
+		System.out.println("####################################");
 	}
 
 }
