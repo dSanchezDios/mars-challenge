@@ -1,7 +1,7 @@
 I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that I wrote
 before start to code:
 
-::::::::::::::::::::::::::::::::::::::::::: ASSUMPTIONS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::: ASSUMPTIONS ⚖️ ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # I have assumed that:
 
@@ -43,69 +43,86 @@ before start to code:
 6.- When the next instruction move the rover to an obstacle it throw an IllegalArgumentException with the last
     valid position.
             
-::::::::::::::::::::::::::::::::::::::::::::::: DESIGN :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::: DESIGN 🎨 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
             
 With these assumptions I've written tests, main (AcceptationTest) who tests from beginning to end then project, 
 the rest of them are the ones that I, using TDD, have implemented the rest of classes.
 
-	    I started doing test for parse the input, they they were "telling" me the objects I needed.
+I started doing test for parse the input, they they were "telling" me the objects I needed.
 
- 		# parsers: they parse string input and return new objects or throw exceptions.
+# Parsers
 
-          	- RoverParser: it read the global input and calls the rest of parsers, if everything is OK
-				it will return the object Rover that contains the list of instructions, position and map.
+> They parse string input and return new objects or throw exceptions.
 
-		# model:
+# RoverParser: 
+    It read the global input and calls the rest of parsers, if everything is OK it will return the Rover object that
+    contains the list of instructions, position and map.
 
-		- Coordinate: an immutable object with a number > 0, they can grow or decrement and be higher than
-			other coordinate (methods return a new object).
 
-		- Dimension: an immutable pair of coordinates, a dimension can increment and decrement its variables
-		    and tell if is out of a range.
+# Model
 
-		- Instruction: enum with the three different types, l, r, f, b.
+> Where the OOP happens.
 
-		- Orientation: enum with the four cardinals, each orientation has a right and a left.
+# Coordinate
+    An immutable object with a number > 0, they can grow or decrement and be higher than other coordinate (methods
+    return a new object).
 
-		- Map: an immutable object with two variables: dimension, Dimension object for tell rover which is
-		    the limit, and obstacles list, a hashSet (it cant be two obstacles in the same square).
+# Dimension
+    An immutable pair of coordinates, a dimension can increment and decrement its variables and tell if is out of range.
 
-        - Position: an immutable group composed of a Diension (X, Y coordinates) and one Orientation.
+# Instruction
+    Enum with the three different types, l, r, f, b.
 
-		- Rover: Main object, an object with a position, map and a list of instructions. 
-		     Rovers can execute instructions list, this method execute instruction by instruction from the list
-		     and move, or turn depending of the instruction, at the end it return the actual position.
-		     Rovers also can execute a single instruction as in the example.
-		     I decided just read instructions and put movements private I thought is easier for the user :-).
-		     
-		     # utils
-		     
-		     - InstructionListOptimizer: Optimize the instruction list provided.
+# Orientation
+    Enum with the four cardinals, each orientation has a right and a left.
+
+# Map
+    An immutable object with two variables: Dimension object for tell which is the size and obstacles (Dimension)
+    hashSet (Why? -> Because it cant be two obstacles in the same square).
+
+# Position
+    An immutable group composed of a Dimension and one Orientation.
+
+# Rover 
+    "Main" object, with a position, map and a list of instructions. 
+    
+    Rovers can execute instructions list, this method execute instruction by instruction from the list
+	and move, or turn depending of the instruction, at the end it return the actual position.
+	
+	Rovers also can execute a single instruction as in the example. I decided just read instructions and put movements
+	private and just read the instruction I thought is easier for the user :-).
+	
+	     
+# Utils 
+# InstructionListOptimizer
+    Optimize the instruction list provided.
+	
 		
- > I decided implement this function because the intern legacy but I would prefer to have just an instructions executor
-   for instructions arrays as the readme.md description… But it didnt take me a big effort it was a release instead of
-   a implementation since it was done.
+ > /*
+    *
+    * About the legacy: I decided implement the intern code reads and moves the rover input by input but I would prefer
+    * to have just an instructions executor for arrays as the readme.md description… But it didnt take me a big effort
+    * it was a release instead of a implementation since it was done.
+    *
+    * /
  		
 # RoversUtils:
 
-		- launch: reads inputs and return the result of execute the rover as a String.
-		- create rover: reads inputs and return a rover.
+    * launch: reads inputs and return the result of execute the rover as a String.
+    * create rover: reads inputs and return a rover.
 		
 # MarsRover:
 		
-		- This is the intern main but with a little refactor. It displays instructions and execute the inputs.
-		  Intern did a good job but I want to talk with him/her about OOP, abstraction, scanners, do whiles, SOLID,
-		  unit testing, TDD and rest of clean code practices. We can/should do some katas 🤓😬.
-		  I split the solution in two modes:
-		  
-		    - Array mode: readme solution, you provide an instructions array input and then execute and print the 
-		                  input.
-		                  
-		    - Interactive mode: intern functionality, ask step by step for an instruction.
-
-  
+    This is the intern main but with a little refactor. It displays instructions and execute the inputs. Intern did a
+    good job but I want to talk with him/her about OOP, abstraction, scanners, do whiles, SOLID, unit testing, TDD and
+    a couple of clean code practices more. We can/should do some katas, it would be nice 🤓😬.
     
- ::::::::::::::::::::::::::::::::::::::: TO BUILD & RUN :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+I split the main in two modes:
+		  
+    * Array mode: readme solution, you provide an instructions array input and then execute and print the input.             
+    * Interactive mode: intern functionality, ask step by step for an instruction.
+   
+:::::::::::::::::::::::::::::::::::::: TO BUILD nd RUN  ⛏ & 🏃 ‍:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 1.- You need java 11 and maven installed.
 
@@ -130,8 +147,8 @@ the rest of them are the ones that I, using TDD, have implemented the rest of cl
 
 > mvn -Dtest=AcceptationTest#shouldReturnExpectedWhenEverythingIsOk test
 
+That's all.
 
-This is all.
 
 Thanks,
-D
+D 
