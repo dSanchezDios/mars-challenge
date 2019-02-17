@@ -33,6 +33,10 @@ public final class Dimension {
 		return new Dimension(x, y.decrement(limits.y));
 	}
 
+	public boolean isOutOf(Dimension obstacle) {
+		return x.isBigger(obstacle.x) || y.isBigger(obstacle.y);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -51,7 +55,4 @@ public final class Dimension {
 		return result;
 	}
 
-	public boolean isOutOf(Dimension obstacle) {
-		return x.isBigger(obstacle.x) || y.isBigger(obstacle.y);
-	}
 }

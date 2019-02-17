@@ -94,5 +94,4 @@ public final class Rover {
 	public int hashCode() {
 		return Objects.hash(map, instructions, position);
 	}
-
 }

@@ -12,7 +12,7 @@ public final class Coordinate {
 
 	private void checkInputValid(int value) {
 		if (value < 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Coordinate has to be >= 0.");
 		}
 	}
 
