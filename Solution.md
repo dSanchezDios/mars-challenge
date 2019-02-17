@@ -1,5 +1,4 @@
-> I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that I wrote
-  before start to code:
+> I've applied SOLID principles and TDD to develop the project, so here is the decisions that I wrote before start.
 
 # ⚖️ ASSUMPTIONS
 
