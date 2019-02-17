@@ -45,10 +45,9 @@ before start to code:
             
 ::::::::::::::::::::::::::::::::::::::::::::::: DESIGN 🎨 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
             
-With these assumptions I've written tests, main (AcceptationTest) who tests from beginning to end then project, 
-the rest of them are the ones that I, using TDD, have implemented the rest of classes.
-
-I started doing test for parse the input, they they were "telling" me the objects I needed.
+> With these assumptions I've written tests, main (AcceptationTest) who tests from beginning to end then project, 
+  the rest of them are the ones that I, using TDD, have implemented the rest of classes.I started doing test for parse 
+  the input, they they were "telling" me the objects I needed.
 
 # Parsers
 
@@ -93,19 +92,14 @@ I started doing test for parse the input, they they were "telling" me the object
 	private and just read the instruction I thought is easier for the user :-).
 	
 	     
-# Utils 
+# Utils package 
 # InstructionListOptimizer
     Optimize the instruction list provided.
-	
-		
- > /*
-    *
-    * About the legacy: I decided implement the intern code reads and moves the rover input by input but I would prefer
-    * to have just an instructions executor for arrays as the readme.md description… But it didnt take me a big effort
-    * it was a release instead of a implementation since it was done.
-    *
-    * /
- 		
+			
+ >  About the legacy: I decided implement the intern code reads and moves the rover input by input but I would prefer
+    to have just an instructions executor for arrays as the readme.md description… But it didnt take me a big effort
+    it was a release instead of a implementation since it was done.
+
 # RoversUtils:
 
     * launch: reads inputs and return the result of execute the rover as a String.
