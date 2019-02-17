@@ -23,7 +23,7 @@ public final class Rover {
 		return position;
 	}
 
-	Position executeInstructions(Instruction instruction) {
+	public Position executeInstructions(Instruction instruction) {
 		executeInstruction(instruction);
 		return position;
 	}
@@ -31,10 +31,10 @@ public final class Rover {
 	private void executeInstruction(Instruction instruction) {
 		switch (instruction) {
 			case f:
-				position = moveForward();
+				position = new Position(moveForward(), position.getOrientation());
 				break;
 			case b:
-				position = moveBackward();
+				position = new Position(moveBackward(), position.getOrientation());
 				break;
 			case r:
 				position = new Position(position.getCoordinates(), position.getOrientation().getRight());
@@ -45,11 +45,10 @@ public final class Rover {
 		}
 	}
 
-	private Position moveForward() {
-		var orientation = position.getOrientation();
+	private Dimension moveForward() {
 		var nextDimension = position.getCoordinates();
 
-		switch (orientation) {
+		switch (position.getOrientation()) {
 			case N:
 				nextDimension = position.getCoordinates().incrementY(map.getLimits());
 				break;
@@ -66,15 +65,13 @@ public final class Rover {
 
 		checkObstacle(nextDimension);
 
-		return new Position(nextDimension, position.getOrientation());
+		return nextDimension;
 	}
 
-
-	private Position moveBackward() {
-		var orientation = position.getOrientation();
+	private Dimension moveBackward() {
 		var nextDimension = position.getCoordinates();
 
-		switch (orientation) {
+		switch (position.getOrientation()) {
 			case N:
 				nextDimension = position.getCoordinates().decrementY(map.getLimits());
 				break;
@@ -91,7 +88,7 @@ public final class Rover {
 
 		checkObstacle(nextDimension);
 
-		return new Position(nextDimension, position.getOrientation());
+		return nextDimension;
 	}
 
 	private void checkObstacle(Dimension nextPosition) {
