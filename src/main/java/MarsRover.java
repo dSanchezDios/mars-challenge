@@ -13,7 +13,7 @@ public class MarsRover {
 
 		printInputs(map, rover, instructions);
 
-		System.out.println("Rover log:");
+		System.out.println("Rover output:");
 		System.out.println(RoverUtils.launch(map, obstacles, instructions, rover));
 	}
 
