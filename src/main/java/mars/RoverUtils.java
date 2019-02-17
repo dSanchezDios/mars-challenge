@@ -6,6 +6,10 @@ import org.jetbrains.annotations.NotNull;
 
 public final class RoverUtils {
 
+	private RoverUtils() {
+		// Nothing to do
+	}
+
 	public static String launch(String mapSize, String obstacles, String instructions, String position) {
 		final RoverParser roverParser = getRoverParser();
 
