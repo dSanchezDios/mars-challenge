@@ -1,5 +1,5 @@
-I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that I wrote
-before start to code:
+> I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that I wrote
+  before start to code:
 
 # ASSUMPTIONS ⚖️
 
@@ -26,7 +26,7 @@ before start to code:
 
 5. I do not want the rover to run out of battery 🤖, that means between f's or b's:
 		
-   5.1. Turns in the same direction are optimized in groups of four. 
+   Turns in the same direction are optimized in groups of four. 
 
 			e.g.:
 			    - x8 r -> x0 r
@@ -34,7 +34,7 @@ before start to code:
 			    - x10 r -> x2 r
 			    - x11 r -> x3 r
 			
-   5.2. r and l are opposite.
+   Turns r and l are opposite.
 
 			e.g.:
 			    - rlrlr -> R
@@ -118,7 +118,7 @@ before start to code:
     * Array mode: readme solution, you provide an instructions array input and then execute and print the input.             
     * Interactive mode: intern functionality, ask step by step for an instruction.
    
-# TO BUILD nd RUN  ⛏ & 🏃
+# To build and run  ⛏🏃
 
 1. You need java 11 and maven installed.
 
@@ -127,19 +127,19 @@ before start to code:
 > mvn install
 > cd target/classes/
         
-2.1. After you moved to the package you if you want to try with the array mode:
+3. After you moved to the package you if you want to try with the array mode:
 
 > java MarsRover -a 
         
-2.2. Or you can try with interactive mode:
+4. Or you can try with interactive mode:
 
 > java MarsRover -i 
 
-3. To run all test, execute in a terminal:
+5. To run all test, execute in a terminal:
 
 > mvn test
 
-4. To run the example test, execute in a terminal:
+6. To run the example test, execute in a terminal:
 
 > mvn -Dtest=AcceptationTest#shouldReturnExpectedWhenEverythingIsOk test
 
