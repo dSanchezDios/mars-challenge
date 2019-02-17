@@ -117,4 +117,17 @@ class AcceptationTest {
 
 		assertEquals(expected, actual);
 	}
+
+	@Test
+	void shouldReturnExpectedWhenEverythingIsOk() {
+		final var mapSize = "50 10";
+		final var instructions = "bbrbbrrrrrbrrbllll";
+		final var position = "3 3 E";
+		final var obstacles = "4 5-30 10";
+
+		final var expected = "1 5 E";
+		final var actual = launch(mapSize, obstacles, instructions, position);
+
+		assertEquals(expected, actual);
+	}
 }
