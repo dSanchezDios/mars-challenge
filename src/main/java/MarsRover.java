@@ -18,23 +18,22 @@ public class MarsRover {
 	}
 
 	private static String getRoverPosition() {
-		System.out.println("Insert rover position: ex \"0 0 N\"");
+		System.out.println("Insert rover position ex \"0 0 N\"");
 		return new Scanner(System.in).nextLine();
 	}
 
 	private static String getMap() {
-		System.out.println("Insert map size: ex \"5 6\"");
+		System.out.println("Insert map size ex \"5 6\"");
 		return new Scanner(System.in).nextLine();
 	}
 
 	private static String getObstacles() {
-		System.out.println("Insert obstacles : ex \"1 2-3 4\"");
+		System.out.println("Insert obstacles ex \"1 2-3 4\"");
 		return new Scanner(System.in).nextLine();
 	}
 
 	private static String getInstructions() {
-		System.out.println("Insert list of instructions: " +
-				"ex: \"lbrf\"");
+		System.out.println("Insert list of instructions ex: \"lbrf\"");
 		System.out.println("Actions permitted f = forward, b = backward, l = turn left, r = turn right)");
 		return new Scanner(System.in).nextLine();
 	}
