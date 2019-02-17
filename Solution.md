@@ -83,15 +83,14 @@
     An immutable group composed of a Dimension and one Orientation.
 
 ## Rover 
-    "Main" object, with a position, map and a list of instructions. 
+    Main object, with a position, map and a list of instructions. 
     
-    Rovers can execute instructions list, this method execute instruction by instruction from the list
-	and move, or turn depending of the instruction, at the end it return the actual position.
+    Rovers can execute instructions list, this method execute instruction by instruction from the list and move, or turn
+    depending of the instruction, at the end, it will return the actual position.
 	
 	Rovers also can execute a single instruction as in the example. I decided just read instructions and put movements
-	private and just read the instruction I thought is easier for the user :-).
+	private and just read the instruction I think is easier for the user :-).
 	
-	     
 # Utils package 
 ## InstructionListOptimizer
     Optimize the instruction list provided.
