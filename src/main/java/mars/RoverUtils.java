@@ -11,9 +11,7 @@ public final class RoverUtils {
 	}
 
 	public static String launch(String mapSize, String obstacles, String instructions, String position) {
-		final RoverParser roverParser = getRoverParser();
-
-		var rover = roverParser.parse(mapSize, obstacles, instructions, position);
+		var rover = createRover(mapSize, obstacles, instructions, position);
 
 		return rover.executeInstructions().toString();
 	}
