@@ -1,9 +1,9 @@
 I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that I wrote
 before start to code:
 
-############################################ ASSUMPTIONS ###############################################################
+::::::::::::::::::::::::::::::::::::::::::: ASSUMPTIONS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-I have assumed that:
+# I have assumed that:
 
 1.- Rovers and obstacles can not exist out of the map, that means an input with a rover out of the range will throw
     an IllegalArgumentException with a description.
@@ -43,7 +43,7 @@ I have assumed that:
 6.- When the next instruction move the rover to an obstacle it throw an IllegalArgumentException with the last
     valid position.
             
-############################################## DESIGN ##################################################################
+::::::::::::::::::::::::::::::::::::::::::::::: DESIGN :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
             
 With these assumptions I've written tests, main (AcceptationTest) who tests from beginning to end then project, 
 the rest of them are the ones that I, using TDD, have implemented the rest of classes.
@@ -82,16 +82,16 @@ the rest of them are the ones that I, using TDD, have implemented the rest of cl
 		     
 		     - InstructionListOptimizer: Optimize the instruction list provided.
 		
- I decided implement this function because the intern legacy but I would prefer to have just an instructions executor
- for instructions arrays as the readme.md description… But it didnt take me a big effort it was a release instead of
- a implementation since it was done.
+ > I decided implement this function because the intern legacy but I would prefer to have just an instructions executor
+   for instructions arrays as the readme.md description… But it didnt take me a big effort it was a release instead of
+   a implementation since it was done.
  		
-RoversUtils:
+# RoversUtils:
 
 		- launch: reads inputs and return the result of execute the rover as a String.
 		- create rover: reads inputs and return a rover.
 		
-MarsRover:
+# MarsRover:
 		
 		- This is the intern main but with a little refactor. It displays instructions and execute the inputs.
 		  Intern did a good job but I want to talk with him/her about OOP, abstraction, scanners, do whiles, SOLID,
@@ -105,7 +105,7 @@ MarsRover:
 
   
     
-############################################ TO BUILD & RUN ############################################################
+ ::::::::::::::::::::::::::::::::::::::: TO BUILD & RUN :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 1.- You need java 11 and maven installed.
 
@@ -118,7 +118,7 @@ MarsRover:
 
 > java MarsRover -a 
         
-2.2.- Or you can try with interactive:
+2.2.- Or you can try with interactive mode:
 
 > java MarsRover -i 
 
