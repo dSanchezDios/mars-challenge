@@ -1,20 +1,20 @@
 I've applied SOLID principles and TDD for develop the project, so this file is my decisions explanation that I wrote
 before start to code:
 
-:::::::::::::::::::::::::::::::::::::::::: ASSUMPTIONS ⚖️ ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ASSUMPTIONS ⚖️
 
-# I have assumed that:
+## I have assumed that:
 
-1.- Rovers and obstacles can not exist out of the map, that means an input with a rover out of the range will throw
+1. Rovers and obstacles can not exist out of the map, that means an input with a rover out of the range will throw
     an IllegalArgumentException with a description.
 
-2.- Bottom left coordinates are (0, 0), so there is no negative coordinates, that means an input with negative 
+2. Bottom left coordinates are (0, 0), so there is no negative coordinates, that means an input with negative 
     coordinates will throw an IllegalArgumentException.
 
-3.- Rover has a position and a list of instructions, that means an input without position will throw an 
+3. Rover has a position and a list of instructions, that means an input without position will throw an 
     IllegalArgumentException.
 
-4.- With a plateau coordinates (X, Y), rover movements are not delimited, that means rover position (X+1, Y) will be
+4. With a plateau coordinates (X, Y), rover movements are not delimited, that means rover position (X+1, Y) will be
     (0,Y) and (X, Y+1) will be (X, 0) and same for (-1, Y) or (X, -1).
 		    
 			e.g.:
@@ -24,9 +24,9 @@ before start to code:
 			    - Rover instruction:  (f, f)
 			    - Rover position after execute instructions: (1, 0, N)
 
-5.- I do not want the rover to run out of battery 🤖, that means between f's or b's:
+5. I do not want the rover to run out of battery 🤖, that means between f's or b's:
 		
-   5.1.- Turns in the same direction are optimized in groups of four. 
+   5.1. Turns in the same direction are optimized in groups of four. 
 
 			e.g.:
 			    - x8 r -> x0 r
@@ -34,55 +34,55 @@ before start to code:
 			    - x10 r -> x2 r
 			    - x11 r -> x3 r
 			
-   5.2.- r and l are opposite.
+   5.2. r and l are opposite.
 
 			e.g.:
 			    - rlrlr -> R
 			    - lllllllrr -> L
 			    
-6.- When the next instruction move the rover to an obstacle it throw an IllegalArgumentException with the last
-    valid position.
+6. When the next instruction move the rover to an obstacle it throw an IllegalArgumentException with the last valid
+   position.
             
-::::::::::::::::::::::::::::::::::::::::::::::: DESIGN 🎨 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# DESIGN 🎨
             
 > With these assumptions I've written tests, main (AcceptationTest) who tests from beginning to end then project, 
   the rest of them are the ones that I, using TDD, have implemented the rest of classes.I started doing test for parse 
   the input, they they were "telling" me the objects I needed.
 
-# Parsers
+# Parsers package
 
 > They parse string input and return new objects or throw exceptions.
 
-# RoverParser: 
+## RoverParser: 
     It read the global input and calls the rest of parsers, if everything is OK it will return the Rover object that
     contains the list of instructions, position and map.
 
 
-# Model
+# Model package
 
 > Where the OOP happens.
 
-# Coordinate
+## Coordinate
     An immutable object with a number > 0, they can grow or decrement and be higher than other coordinate (methods
     return a new object).
 
-# Dimension
+## Dimension
     An immutable pair of coordinates, a dimension can increment and decrement its variables and tell if is out of range.
 
-# Instruction
+## Instruction
     Enum with the three different types, l, r, f, b.
 
-# Orientation
+## Orientation
     Enum with the four cardinals, each orientation has a right and a left.
 
-# Map
+## Map
     An immutable object with two variables: Dimension object for tell which is the size and obstacles (Dimension)
     hashSet (Why? -> Because it cant be two obstacles in the same square).
 
-# Position
+## Position
     An immutable group composed of a Dimension and one Orientation.
 
-# Rover 
+## Rover 
     "Main" object, with a position, map and a list of instructions. 
     
     Rovers can execute instructions list, this method execute instruction by instruction from the list
@@ -93,12 +93,14 @@ before start to code:
 	
 	     
 # Utils package 
-# InstructionListOptimizer
+## InstructionListOptimizer
     Optimize the instruction list provided.
 			
+## Just saying
+
  >  About the legacy: I decided implement the intern code reads and moves the rover input by input but I would prefer
-    to have just an instructions executor for arrays as the readme.md description… But it didnt take me a big effort
-    it was a release instead of a implementation since it was done.
+    to have just an instructions executor for arrays as the readme description… It didnt take me a big effort, it was a
+    release instead of a implementation since it was done.
 
 # RoversUtils:
 
@@ -111,33 +113,33 @@ before start to code:
     good job but I want to talk with him/her about OOP, abstraction, scanners, do whiles, SOLID, unit testing, TDD and
     a couple of clean code practices more. We can/should do some katas, it would be nice 🤓😬.
     
-I split the main in two modes:
+    I split the main in two modes:
 		  
     * Array mode: readme solution, you provide an instructions array input and then execute and print the input.             
     * Interactive mode: intern functionality, ask step by step for an instruction.
    
-:::::::::::::::::::::::::::::::::::::: TO BUILD nd RUN  ⛏ & 🏃 ‍:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# TO BUILD nd RUN  ⛏ & 🏃
 
-1.- You need java 11 and maven installed.
+1. You need java 11 and maven installed.
 
-2.- You need to do an install and then you run the java class, just open the folder in terminal and:
+2. You need to do an install and then you run the java class, just open the folder in terminal and:
 
 > mvn install
 > cd target/classes/
         
-2.1.- After you moved to the package you if you want to try with the array mode:
+2.1. After you moved to the package you if you want to try with the array mode:
 
 > java MarsRover -a 
         
-2.2.- Or you can try with interactive mode:
+2.2. Or you can try with interactive mode:
 
 > java MarsRover -i 
 
-3.- To run all test, execute in a terminal:
+3. To run all test, execute in a terminal:
 
 > mvn test
 
-4.- To run the example test, execute in a terminal:
+4. To run the example test, execute in a terminal:
 
 > mvn -Dtest=AcceptationTest#shouldReturnExpectedWhenEverythingIsOk test
 
