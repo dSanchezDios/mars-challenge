@@ -47,37 +47,57 @@ public final class Rover {
 
 	private Position moveForward() {
 		var orientation = position.getOrientation();
+		var nextDimension = position.getCoordinates();
 
 		switch (orientation) {
 			case N:
-				return new Position(position.getCoordinates().incrementY(map.getLimits()), orientation);
+				nextDimension = position.getCoordinates().incrementY(map.getLimits());
+				break;
 			case S:
-				return new Position(position.getCoordinates().decrementY(map.getLimits()), orientation);
+				nextDimension = position.getCoordinates().decrementY(map.getLimits());
+				break;
 			case E:
-				return new Position(position.getCoordinates().incrementX(map.getLimits()), orientation);
+				nextDimension = position.getCoordinates().incrementX(map.getLimits());
+				break;
 			case W:
-				return new Position(position.getCoordinates().decrementX(map.getLimits()), orientation);
+				nextDimension = position.getCoordinates().decrementX(map.getLimits());
+				break;
 		}
 
-		return position;
+		checkObstacle(nextDimension);
+
+		return new Position(nextDimension, position.getOrientation());
 	}
 
 
 	private Position moveBackward() {
 		var orientation = position.getOrientation();
+		var nextDimension = position.getCoordinates();
 
 		switch (orientation) {
 			case N:
-				return new Position(position.getCoordinates().decrementY(map.getLimits()), orientation);
+				nextDimension = position.getCoordinates().decrementY(map.getLimits());
+				break;
 			case S:
-				return new Position(position.getCoordinates().incrementY(map.getLimits()), orientation);
+				nextDimension = position.getCoordinates().incrementY(map.getLimits());
+				break;
 			case E:
-				return new Position(position.getCoordinates().decrementX(map.getLimits()), orientation);
+				nextDimension = position.getCoordinates().decrementX(map.getLimits());
+				break;
 			case W:
-				return new Position(position.getCoordinates().incrementX(map.getLimits()), orientation);
+				nextDimension = position.getCoordinates().incrementX(map.getLimits());
+				break;
 		}
 
-		return position;
+		checkObstacle(nextDimension);
+
+		return new Position(nextDimension, position.getOrientation());
+	}
+
+	private void checkObstacle(Dimension nextPosition) {
+		if (map.getObstacles().contains(nextPosition)) {
+			throw new IllegalArgumentException("Next position is an obstacle, rover stopped at " + position);
+		}
 	}
 
 	@Override
