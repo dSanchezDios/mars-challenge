@@ -14,10 +14,6 @@ public final class Rover {
 		this.position = position;
 	}
 
-	public Position getPosition() {
-		return position;
-	}
-
 	public Position executeInstructions() {
 		instructions.forEach(this::executeInstruction);
 		return position;

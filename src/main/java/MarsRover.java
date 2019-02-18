@@ -21,8 +21,7 @@ public class MarsRover {
 		final var obstaclesInput = getObstaclesInput();
 
 		if (mode.equals(ARRAY_MODE)) {
-			final var instructionsInput = getInstructionsInput();
-			arrayMode(mapInput, obstaclesInput, instructionsInput, positionInput);
+			arrayMode(mapInput, obstaclesInput, positionInput);
 		} else if (mode.equals(INTERACTIVE_MODE)) {
 			interactiveMode(mapInput, obstaclesInput, positionInput);
 		} else {
@@ -30,24 +29,41 @@ public class MarsRover {
 		}
 	}
 
-	private static void arrayMode(String map, String obstacles, String instructions, String rover) {
+	private static void arrayMode(String map, String obstacles, String rover) {
+		final var instructions = getInstructionsInput();
 		printInputs(map, rover, instructions);
 		System.out.println("Rover output:");
 		System.out.println(launch(map, obstacles, instructions, rover));
 	}
 
 	private static void interactiveMode(String mapInput, String obstaclesInput, String roverInput) {
-		printInstructions();
 		final var rover = createRover(mapInput, obstaclesInput, null, roverInput);
 		final var scanner = new Scanner(System.in);
+
+		printInstructions();
 		var instruction = scanner.nextLine();
-		printRoverPosition(rover.executeInstructions(Instruction.valueOf(instruction)));
 
 		do {
 			printInstructions();
 			printRoverPosition(rover.executeInstructions(Instruction.valueOf(instruction)));
 			instruction = scanner.nextLine();
-		} while (!instruction.equals("X"));
+		} while (!instruction.equals("X") && isAInstructionValid(instruction));
+
+		printGoodBye();
+	}
+
+	private static void printGoodBye() {
+		System.out.println("You've pressed X or a non instruction valid.");
+		System.out.println("Good bye.");
+	}
+
+	private static boolean isAInstructionValid(String instruction) {
+		try{
+			Instruction.valueOf(instruction);
+			return true;
+		} catch (IllegalArgumentException ex){
+			return false;
+		}
 	}
 
 	private static void checkArguments(String[] args) {
@@ -95,5 +111,4 @@ public class MarsRover {
 		System.out.println("Instructions: " + instructionsNumber);
 		System.out.println("####################################");
 	}
-
 }

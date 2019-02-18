@@ -4,19 +4,15 @@ import mars.model.Rover;
 import mars.parsers.*;
 import org.jetbrains.annotations.NotNull;
 
-public final class RoverUtils {
+public interface RoverUtils {
 
-	private RoverUtils() {
-		// Nothing to do
-	}
-
-	public static String launch(String mapSize, String obstacles, String instructions, String position) {
+	static String launch(String mapSize, String obstacles, String instructions, String position) {
 		var rover = createRover(mapSize, obstacles, instructions, position);
 
 		return rover.executeInstructions().toString();
 	}
 
-	public static Rover createRover(String mapSize, String obstacles, String instructions, String position) {
+	static Rover createRover(String mapSize, String obstacles, String instructions, String position) {
 		final RoverParser roverParser = getRoverParser();
 
 		return roverParser.parse(mapSize, obstacles, instructions, position);
