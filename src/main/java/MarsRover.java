@@ -1,114 +1,62 @@
-import mars.model.Instruction;
-import mars.model.Position;
-
 import java.util.Scanner;
 
-import static mars.RoverUtils.createRover;
 import static mars.RoverUtils.launch;
 
 public class MarsRover {
-	private static final String ARRAY_MODE = "-a";
-	private static final String INTERACTIVE_MODE = "-i";
-	private static final IllegalArgumentException WRONG_MODE =
-			new IllegalArgumentException("Execute in array mode with -a or interactive mode with -i.");
 
 	public static void main(String[] args) {
-		checkArguments(args);
 
-		final var mode = args[0];
 		final var mapInput = getMapInput();
 		final var positionInput = getRoverPositionInput();
 		final var obstaclesInput = getObstaclesInput();
+		final var instructionsInput = getInstructionsInput();
 
-		if (mode.equals(ARRAY_MODE)) {
-			arrayMode(mapInput, obstaclesInput, positionInput);
-		} else if (mode.equals(INTERACTIVE_MODE)) {
-			interactiveMode(mapInput, obstaclesInput, positionInput);
-		} else {
-			throw WRONG_MODE;
-		}
+		printInputs(
+				mapInput,
+				obstaclesInput,
+				positionInput,
+				instructionsInput
+		);
+
+		System.out.println("# Rover output:");
+		System.out.println(
+				launch(
+						mapInput,
+						obstaclesInput,
+						instructionsInput,
+						positionInput)
+		);
+		System.out.println("# Good bye.");
+
 	}
-
-	private static void arrayMode(String map, String obstacles, String rover) {
-		final var instructions = getInstructionsInput();
-		printInputs(map, rover, instructions);
-		System.out.println("Rover output:");
-		System.out.println(launch(map, obstacles, instructions, rover));
-	}
-
-	private static void interactiveMode(String mapInput, String obstaclesInput, String roverInput) {
-		final var rover = createRover(mapInput, obstaclesInput, null, roverInput);
-		final var scanner = new Scanner(System.in);
-
-		printInstructions();
-		var instruction = scanner.nextLine();
-
-		do {
-			printInstructions();
-			printRoverPosition(rover.executeInstructions(Instruction.valueOf(instruction)));
-			instruction = scanner.nextLine();
-		} while (!instruction.equals("X") && isAInstructionValid(instruction));
-
-		printGoodBye();
-	}
-
-	private static void printGoodBye() {
-		System.out.println("You've pressed X or a non instruction valid.");
-		System.out.println("Good bye.");
-	}
-
-	private static boolean isAInstructionValid(String instruction) {
-		try{
-			Instruction.valueOf(instruction);
-			return true;
-		} catch (IllegalArgumentException ex){
-			return false;
-		}
-	}
-
-	private static void checkArguments(String[] args) {
-		if (args == null || args.length != 1 || !(args[0].equals(ARRAY_MODE) || args[0].equals(INTERACTIVE_MODE))) {
-			throw WRONG_MODE;
-		}
-	}
-
-	private static void printInstructions() {
-		System.out.println("Introduce an instruction: f move forward, b move backward, r right or l left.");
-		System.out.println("Press X to exit.");
-	}
-
-	private static void printRoverPosition(Position position) {
-		System.out.println("Rover position: " + position);
-	}
-
 
 	private static String getRoverPositionInput() {
-		System.out.println("Insert rover position ex \"0 0 N\"");
+		System.out.println("# Insert rover position e.g. \"0 0 N\"");
 		return new Scanner(System.in).nextLine();
 	}
 
 	private static String getMapInput() {
-		System.out.println("Insert map size ex \"5 6\"");
+		System.out.println("# Insert map size e.g. \"5 6\"");
 		return new Scanner(System.in).nextLine();
 	}
 
 	private static String getObstaclesInput() {
-		System.out.println("Insert obstacles ex \"1 2-3 4\"");
+		System.out.println("# Insert obstacles e.g. \"1 2-3 4\"");
 		return new Scanner(System.in).nextLine();
 	}
 
 	private static String getInstructionsInput() {
-		System.out.println("Insert list of instructions ex: \"lbrf\"");
-		System.out.println("Actions permitted f = forward, b = backward, l = turn left, r = turn right)");
+		System.out.println("# Insert list of instructions e.g.: \"lbrf\"");
+		System.out.println("# Actions permitted f = forward, b = backward, l = turn left, r = turn right)");
 		return new Scanner(System.in).nextLine();
 	}
 
-	private static void printInputs(String map, String rover, String instructionsNumber) {
-		System.out.println("####################################");
-		System.out.println("Inputs:");
-		System.out.println("Map: " + map);
-		System.out.println("Rover: " + rover);
-		System.out.println("Instructions: " + instructionsNumber);
+	private static void printInputs(String map, String obstacles, String instructions, String position) {
+		System.out.println("###########  Inputs  ################");
+		System.out.println("# Map size: " + map);
+		System.out.println("# Obstacles list: " + obstacles);
+		System.out.println("# Rover's position: " + position);
+		System.out.println("# Instructions : " + instructions);
 		System.out.println("####################################");
 	}
 }
