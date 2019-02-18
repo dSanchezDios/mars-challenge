@@ -5,16 +5,16 @@
 ## I have assumed that:
 
 1. Rovers and obstacles can not exist out of the map, that means an input with a rover out of the range will throw
-    an IllegalArgumentException with a description.
+   an IllegalArgumentException with a description.
 
 2. Bottom left coordinates are (0, 0), so there is no negative coordinates, that means an input with negative 
-    coordinates will throw an IllegalArgumentException.
+   coordinates will throw an CoordinateException.
 
-3. Rover has a position and a list of instructions, that means an input without position will throw an 
-    IllegalArgumentException.
+3. Rover has a position and a list of instructions, that means an input without position will throw an
+   IllegalArgumentException.
 
 4. With a plateau coordinates (X, Y), rover movements are not delimited, that means rover position (X+1, Y) will be
-    (0,Y) and (X, Y+1) will be (X, 0) and same for (-1, Y) or (X, -1).
+   (0,Y) and (X, Y+1) will be (X, 0) and same for (-1, Y) or (X, -1).
 		    
 			e.g.:
 				- Map range:          (2, 3)
@@ -39,7 +39,7 @@
 			    - rlrlr -> R
 			    - lllllllrr -> L
 			    
-6. When the next instruction move the rover to an obstacle it throw an IllegalArgumentException with the last valid
+6. When the next instruction move the rover to an obstacle it throw an RoveFoundObstacleException with the last valid
    position.
             
 # 🎨 DESIGN
@@ -55,7 +55,6 @@
 ## RoverParser
     It read the global input and calls the rest of parsers, if everything is OK it will return the Rover object that
     contains the list of instructions, position and map.
-
 
 # Model package
 
@@ -93,8 +92,9 @@
 # Utils package 
 ## InstructionListOptimizer
     Optimize the instruction list provided.
-			
-## Just saying
+    
+    	
+# 🗣 Just saying
 
  >  About the legacy: I decided implement the intern code reads and moves the rover input by input but I would prefer
     to have just an instructions executor for arrays as the readme description… It didnt take me a big effort, it was a
@@ -102,19 +102,21 @@
 
 # RoversUtils
 
+    Interface utils with static methods to make easier the parser injections to client.
     * launch: reads inputs and return the result of execute the rover as a String.
-    * create rover: reads inputs and return a rover.
+    * create rover: reads inputs and return a rover. // Legacy solution
 		
+# MarsRoverLegacy
+		
+    This is the intern main class but with a little refactor. 
+    It displays instructions and execute the inputs. Intern did a good job but I want to talk with him/her about OOP,
+    abstraction, do whiles, SOLID, testing (unit & TDD) and a couple more of clean code practices. We can (should) do
+    some katas, it would be nice 🤓😬.
+
 # MarsRover
-		
-    This is the intern main but with a little refactor. It displays instructions and execute the inputs. Intern did a
-    good job but I want to talk with him/her about OOP, abstraction, scanners, do whiles, SOLID, unit testing, TDD and
-    a couple of clean code practices more. We can/should do some katas, it would be nice 🤓😬.
-    
-    I split the main in two modes:
-		  
-    * Array mode: readme solution, you provide an instructions array input and then execute and print the input.             
-    * Interactive mode: intern functionality, ask step by step for an instruction.
+
+    This is my solution to problem. 
+    It reads the arguments and launch the rover, just follow the instructions and press enter.
    
 # ⛏🏃 To build and run
 
@@ -124,23 +126,23 @@
 
     > mvn install
     
-3. You need to move to package generated:
+3. Then you have a target folder with classes, you must move to:
 
     > cd target/classes/
         
-4. After you moved to the package you if you want to try with the array mode:
+4. After you moved to the package and if you want to try my solution:
 
-    > java MarsRover -a 
+    > java MarsRover 
         
-5. Or you can try with interactive mode:
+5. Or you can try the legacy:
 
-    > java MarsRover -i 
+    > java MarsRoverLegacy
 
-6. To run all test, execute in a terminal:
+6. Also, to run all test, execute in a terminal:
 
     > mvn test
 
-7. To run the example test, execute in a terminal:
+7. And to run the example test, execute in a terminal:
 
     > mvn -Dtest=AcceptationTest#shouldReturnExpectedWhenEverythingIsOk test
 
