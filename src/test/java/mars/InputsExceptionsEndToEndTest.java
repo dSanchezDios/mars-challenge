@@ -1,5 +1,6 @@
 package mars;
 
+import mars.exception.CoordinateException;
 import mars.exception.RoveFoundObstacleException;
 import mars.model.Instruction;
 import mars.model.Rover;
@@ -17,7 +18,7 @@ class InputsExceptionsEndToEndTest {
 		final var instructions = "lflflflff";
 		final var position = "1 0 N";
 
-		assertThrows(IllegalArgumentException.class, () -> launch(mapSize, null, instructions, position));
+		assertThrows(CoordinateException.class, () -> launch(mapSize, null, instructions, position));
 	}
 
 	@Test
@@ -26,7 +27,7 @@ class InputsExceptionsEndToEndTest {
 		final var instructions = "lflflflff";
 		final var position = "3 -3 E";
 
-		assertThrows(IllegalArgumentException.class, () -> launch(mapSize, null, instructions, position));
+		assertThrows(CoordinateException.class, () -> launch(mapSize, null, instructions, position));
 	}
 
 	@Test

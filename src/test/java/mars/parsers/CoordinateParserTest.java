@@ -1,5 +1,6 @@
 package mars.parsers;
 
+import mars.exception.CoordinateException;
 import mars.model.Coordinate;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +35,7 @@ class CoordinateParserTest {
 	@Test
 	void shouldFailWithNumberNegativeInInput() {
 		final var input = "-1";
-		assertThrows(IllegalArgumentException.class, () -> coordinateParser.parse(input));
+		assertThrows(CoordinateException.class, () -> coordinateParser.parse(input));
 	}
 
 	@Test

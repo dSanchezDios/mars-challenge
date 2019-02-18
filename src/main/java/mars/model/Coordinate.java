@@ -1,5 +1,7 @@
 package mars.model;
 
+import mars.exception.CoordinateException;
+
 import java.util.Objects;
 
 public final class Coordinate {
@@ -12,7 +14,7 @@ public final class Coordinate {
 
 	private void checkInputValid(int value) {
 		if (value < 0) {
-			throw new IllegalArgumentException("Coordinate has to be >= 0.");
+			throw new CoordinateException("Coordinates can't be negatives.");
 		}
 	}
 
