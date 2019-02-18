@@ -22,9 +22,11 @@ public interface RoverUtils {
 	private static RoverParser getRoverParser() {
 		final var coordinateParser = new CoordinateParser();
 		final var dimensionParser = new DimensionParser(coordinateParser);
-
+		
 		return new RoverParser(
-				new MapParser(new ObstaclesParser(dimensionParser), dimensionParser),
+				new MapParser(
+						new ObstaclesParser(dimensionParser),
+						dimensionParser),
 				new InstructionsParser(),
 				new PositionParser(coordinateParser)
 		);
