@@ -36,8 +36,8 @@
         Turns r and l are opposite.
 
 			e.g.:
-			    - rlrlr -> R
-			    - lllllllrr -> L
+			    - rlrlr -> r
+			    - lllllllrr -> l
 			    
 6. When the next instruction move the rover to an obstacle it throw an RoveFoundObstacleException with the last valid
    position.
