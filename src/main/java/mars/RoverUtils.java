@@ -2,7 +2,6 @@ package mars;
 
 import mars.model.Rover;
 import mars.parsers.*;
-import org.jetbrains.annotations.NotNull;
 
 public interface RoverUtils {
 
@@ -18,13 +17,14 @@ public interface RoverUtils {
 		return roverParser.parse(mapSize, obstacles, instructions, position);
 	}
 
-	@NotNull
 	private static RoverParser getRoverParser() {
 		final var coordinateParser = new CoordinateParser();
 		final var dimensionParser = new DimensionParser(coordinateParser);
 
 		return new RoverParser(
-				new MapParser(new ObstaclesParser(dimensionParser), dimensionParser),
+				new MapParser(
+						new ObstaclesParser(dimensionParser),
+						dimensionParser),
 				new InstructionsParser(),
 				new PositionParser(coordinateParser)
 		);
