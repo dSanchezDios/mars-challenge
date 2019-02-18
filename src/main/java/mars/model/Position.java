@@ -1,16 +1,16 @@
 package mars.model;
 
 public final class Position {
-	private final Dimension coordinates;
+	private final Dimension dimension;
 	private final Orientation orientation;
 
-	public Position(Dimension coordinates, Orientation orientation) {
-		this.coordinates = coordinates;
+	public Position(Dimension dimension, Orientation orientation) {
+		this.dimension = dimension;
 		this.orientation = orientation;
 	}
 
-	public Dimension getCoordinates() {
-		return coordinates;
+	public Dimension getDimension() {
+		return dimension;
 	}
 
 	Orientation getOrientation() {
@@ -24,19 +24,19 @@ public final class Position {
 
 		Position position = (Position) o;
 
-		if (!coordinates.equals(position.coordinates)) return false;
+		if (!dimension.equals(position.dimension)) return false;
 		return orientation == position.orientation;
 	}
 
 	@Override
 	public int hashCode() {
-		int result = coordinates.hashCode();
+		int result = dimension.hashCode();
 		result = 31 * result + orientation.hashCode();
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return coordinates.getX()+ " " + coordinates.getY() + " " + orientation;
+		return dimension.getX()+ " " + dimension.getY() + " " + orientation;
 	}
 }

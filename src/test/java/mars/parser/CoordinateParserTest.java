@@ -1,4 +1,4 @@
-package mars.parsers;
+package mars.parser;
 
 import mars.exception.CoordinateException;
 import mars.model.Coordinate;

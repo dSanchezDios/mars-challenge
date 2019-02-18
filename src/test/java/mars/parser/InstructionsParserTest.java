@@ -1,4 +1,4 @@
-package mars.parsers;
+package mars.parser;
 
 import org.junit.jupiter.api.Test;
 

@@ -7,13 +7,13 @@
 1. Rovers and obstacles can not exist out of the map, that means an input with a rover out of the range will throw
    an IllegalArgumentException with a description.
 
-2. Bottom left coordinates are (0, 0), so there is no negative coordinates, that means an input with negative 
-   coordinates will throw an CoordinateException.
+2. Bottom left coordinates are (0, 0), so there is no negative coordinates, that means an input with any negative 
+   coordinate will throw an CoordinateException.
 
 3. Rover has a position and a list of instructions, that means an input without position will throw an
    IllegalArgumentException.
 
-4. With a plateau coordinates (X, Y), rover movements are not delimited, that means rover position (X+1, Y) will be
+4. With a map dimension (X, Y), rover movements are not delimited, that means rover position (X+1, Y) will be
    (0,Y) and (X, Y+1) will be (X, 0) and same for (-1, Y) or (X, -1).
 		    
 			e.g.:
@@ -61,7 +61,7 @@
 > Where the OOP happens.
 
 ## Coordinate
-    An immutable object with a number > 0, they can grow or decrement and be higher than other coordinate (methods
+    An immutable object with a number >= 0, they can grow or decrement and be higher than other coordinate (methods
     return a new object).
 
 ## Dimension

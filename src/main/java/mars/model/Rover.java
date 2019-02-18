@@ -35,29 +35,29 @@ public final class Rover {
 				position = new Position(moveBackward(), position.getOrientation());
 				break;
 			case r:
-				position = new Position(position.getCoordinates(), position.getOrientation().getRight());
+				position = new Position(position.getDimension(), position.getOrientation().getRight());
 				break;
 			case l:
-				position = new Position(position.getCoordinates(), position.getOrientation().getLeft());
+				position = new Position(position.getDimension(), position.getOrientation().getLeft());
 				break;
 		}
 	}
 
 	private Dimension moveForward() {
-		var nextDimension = position.getCoordinates();
+		var nextDimension = position.getDimension();
 
 		switch (position.getOrientation()) {
 			case N:
-				nextDimension = position.getCoordinates().incrementY(map.getLimits());
+				nextDimension = position.getDimension().incrementY(map.getLimits());
 				break;
 			case S:
-				nextDimension = position.getCoordinates().decrementY(map.getLimits());
+				nextDimension = position.getDimension().decrementY(map.getLimits());
 				break;
 			case E:
-				nextDimension = position.getCoordinates().incrementX(map.getLimits());
+				nextDimension = position.getDimension().incrementX(map.getLimits());
 				break;
 			case W:
-				nextDimension = position.getCoordinates().decrementX(map.getLimits());
+				nextDimension = position.getDimension().decrementX(map.getLimits());
 				break;
 		}
 
@@ -67,20 +67,20 @@ public final class Rover {
 	}
 
 	private Dimension moveBackward() {
-		var nextDimension = position.getCoordinates();
+		var nextDimension = position.getDimension();
 
 		switch (position.getOrientation()) {
 			case N:
-				nextDimension = position.getCoordinates().decrementY(map.getLimits());
+				nextDimension = position.getDimension().decrementY(map.getLimits());
 				break;
 			case S:
-				nextDimension = position.getCoordinates().incrementY(map.getLimits());
+				nextDimension = position.getDimension().incrementY(map.getLimits());
 				break;
 			case E:
-				nextDimension = position.getCoordinates().decrementX(map.getLimits());
+				nextDimension = position.getDimension().decrementX(map.getLimits());
 				break;
 			case W:
-				nextDimension = position.getCoordinates().incrementX(map.getLimits());
+				nextDimension = position.getDimension().incrementX(map.getLimits());
 				break;
 		}
 

@@ -1,7 +1,7 @@
 package mars;
 
 import mars.model.Rover;
-import mars.parsers.*;
+import mars.parser.*;
 
 public interface RoverUtils {
 

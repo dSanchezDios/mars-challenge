@@ -1,4 +1,4 @@
-package mars.parsers;
+package mars.parser;
 
 import mars.model.Dimension;
 import mars.model.Map;
@@ -40,13 +40,13 @@ public class RoverParser {
 	}
 
 	private void checkRoverOutOfRange(Map map, Position position) {
-		if (position.getCoordinates().isOutOf(map.getLimits())) {
+		if (position.getDimension().isOutOf(map.getLimits())) {
 			throw OUT_OF_MAP;
 		}
 	}
 
 	private void checkRoverNotInObstacle(Position position, HashSet<Dimension> obstaclesList) {
-		if (obstaclesList.contains(position.getCoordinates())) {
+		if (obstaclesList.contains(position.getDimension())) {
 			throw IN_A_OBSTACLE;
 		}
 	}
