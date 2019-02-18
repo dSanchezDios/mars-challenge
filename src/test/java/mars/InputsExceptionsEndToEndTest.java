@@ -1,5 +1,6 @@
 package mars;
 
+import mars.exception.RoveFoundObstacleException;
 import mars.model.Instruction;
 import mars.model.Rover;
 import org.junit.jupiter.api.Test;
@@ -129,7 +130,7 @@ class InputsExceptionsEndToEndTest {
 		final var obstacles = "1 2-3 5";
 		final Rover rover = createRover(mapSize, obstacles, null, position);
 
-		assertThrows(IllegalArgumentException.class, () -> rover.executeInstructions(Instruction.f));
+		assertThrows(RoveFoundObstacleException.class, () -> rover.executeInstructions(Instruction.f));
 	}
 
 	@Test
@@ -139,6 +140,6 @@ class InputsExceptionsEndToEndTest {
 		final var obstacles = "1 1-3 5";
 		final Rover rover = createRover(mapSize, obstacles, null, position);
 
-		assertThrows(IllegalArgumentException.class, () -> rover.executeInstructions(Instruction.b));
+		assertThrows(RoveFoundObstacleException.class, () -> rover.executeInstructions(Instruction.b));
 	}
 }

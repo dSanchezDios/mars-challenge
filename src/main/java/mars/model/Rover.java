@@ -1,5 +1,7 @@
 package mars.model;
 
+import mars.exception.RoveFoundObstacleException;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -89,7 +91,7 @@ public final class Rover {
 
 	private void checkObstacle(Dimension nextPosition) {
 		if (map.getObstacles().contains(nextPosition)) {
-			throw new IllegalArgumentException("Next position is an obstacle, rover stopped at " + position);
+			throw new RoveFoundObstacleException(position);
 		}
 	}
 

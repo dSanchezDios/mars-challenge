@@ -1,5 +1,6 @@
 package mars.model;
 
+import mars.exception.RoveFoundObstacleException;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -21,7 +22,7 @@ class FailWhenObstaclesTest {
 		final var position = new Position(new Dimension(new Coordinate(0), new Coordinate(0)), N);
 		final var rover = new Rover(map, instructionList, position);
 
-		assertThrows(IllegalArgumentException.class, rover::executeInstructions);
+		assertThrows(RoveFoundObstacleException.class, rover::executeInstructions);
 	}
 
 	@Test
@@ -33,6 +34,6 @@ class FailWhenObstaclesTest {
 		final var position = new Position(new Dimension(new Coordinate(0), new Coordinate(0)), N);
 		final var rover = new Rover(map, instructionList, position);
 
-		assertThrows(IllegalArgumentException.class, rover::executeInstructions);
+		assertThrows(RoveFoundObstacleException.class, rover::executeInstructions);
 	}
 }
