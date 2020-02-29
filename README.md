@@ -58,8 +58,6 @@
 
 # Model package
 
-> Where the OOP happens.
-
 ## Coordinate
     An immutable object with a number >= 0, they can grow or decrement and be higher than other coordinate (methods
     return a new object).
