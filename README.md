@@ -1,4 +1,4 @@
-> I've applied SOLID principles and TDD to develop the project, so here is the decisions that I wrote before start.
+> Here are the decisions that I wrote before start.
 
 # ⚖️ ASSUMPTIONS
 
