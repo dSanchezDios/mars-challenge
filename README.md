@@ -19,25 +19,25 @@
 			e.g.:
 				- Map range:          (2, 3)
 				- Obstacles empty.
-			    - Rover position:     (1, 2, N)
-			    - Rover instruction:  (f, f)
-			    - Rover position after execute instructions: (1, 0, N)
+			    	- Rover position:     (1, 2, N)
+			    	- Rover instruction:  (f, f)
+			    	- Rover position after execute instructions: (1, 0, N)
 
 5. I do not want the rover to run out of battery 🤖, that means between f's or b's:
         
         Turns in the same direction are optimized in groups of four. 
 
 			e.g.:
-			    - x8 r -> x0 r
-			    - x9 r -> x1 r
-			    - x10 r -> x2 r
-			    - x11 r -> x3 r
+			   	- x8 r -> x0 r
+			    	- x9 r -> x1 r
+			    	- x10 r -> x2 r
+			    	- x11 r -> x3 r
 			
         Turns r and l are opposite.
 
 			e.g.:
-			    - rlrlr -> r
-			    - lllllllrr -> l
+			    	- rlrlr -> r
+			    	- lllllllrr -> l
 			    
 6. When the next instruction move the rover to an obstacle it throw an RoveFoundObstacleException with the last valid
    position.
